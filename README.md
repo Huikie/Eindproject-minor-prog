@@ -2,7 +2,7 @@
 
 ## Naam: Daan Huikeshoven (11066628)
 
-## Paragraph summary:
+## Paragraph summary
   Mijn voorstel is om een app te maken die mensen (doelgroep = waarschijnlijk de nieuwe generatie) spelenderwijs leert welke emoticons gebruikt kunnen worden om bepaalde emoties te tonen via een chatapplicatie. Hierdoor kan een eendrachtig gebruik van emoticons gecreëerd worden onder de nieuwe generatie, zodat misverstanden en de negatieve gevolgen daarvan voorkomen kunnen worden.
   
 ## Problem statement
