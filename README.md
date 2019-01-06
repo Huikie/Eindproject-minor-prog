@@ -3,22 +3,22 @@
 ## Naam: Daan Huikeshoven (11066628)
 
 ## Paragraph summary
-  Mijn voorstel is om een app te maken die mensen (doelgroep = waarschijnlijk de nieuwe generatie) spelenderwijs leert welke emoticons gebruikt kunnen worden om bepaalde emoties te tonen via een chatapplicatie. Hierdoor kan een eendrachtig gebruik van emoticons gecreëerd worden onder de nieuwe generatie, zodat misverstanden en de negatieve gevolgen daarvan voorkomen kunnen worden.
+  Mijn voorstel is om een app te maken voor kitesurfers. Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over een spot waar zij gaan kiten. De app zal voorlopig beperkt worden tot spots in Nederland. In de app zullen een aantal veel bezochte kitespots aanwezig zijn (Scheveningen, Wijk aan Zee, Noordwijk etc). Gebruikers kunnen daarnaast een aanvraag indienen om een spot toe te voegen aan de app.
   
 ## Problem statement
 
-### Emoticon teaching app
-Mensen maken tegenwoordig veel gebruik van chatapplicaties om met elkaar te communiceren. Bij het gebruik van deze chatapplicaties wordt vaak gebruik gemaakt van emoticons om emoties te tonen. Echter, hebben mensen verschillende interpretaties van de emoties die je kan tonen met verschillende emoticons. Hierdoor ontstaan misverstanden tussen mensen in de communicatie via chatapplicaties. Dit kan negatieve gevolgen hebben. Zo kunnen hier bijvoorbeeld ruzies door ontstaan.
+### KitesessiesNL
+Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over een spot waar zij gaan kiten. De app zal voorlopig beperkt worden tot spots in Nederland. In de app zullen een aantal veel bezochte kitespots aanwezig zijn (Scheveningen, Wijk aan Zee, Noordwijk etc).
+Daarnaast kan een kiter een aanvraag doen om een bepaalde spot (met informatie over de spot) toe te voegen aan de app. Als deze aanvraag geaccepteerd wordt dan kunnen alle gebruikers van de app als ze bij deze spot gaan kiten aangeven dat ze daar gaan kiten en eventueel aangeven met welke maat kite ze gaan, hoe laat ze gaan etc. Op deze manier kunnen kiters elkaar informeren om zo een fijnere kitesessie te hebben. Bijvoorbeeld doordat men aangeeft met welke maat kite hij/zij van plan is te gaan kiten kan dit twijfel bij mensen (beginners) wegnemen omtrent welke maat kite ze mee moeten nemen en doordat zichtbaar is hoeveel mensen er gaan kiten op welke tijden zou je als beginner de drukte kunnen vermijden of kunnen constateren dat er teveel kiters zijn, zodat je kan beslissen om naar een andere spot te gaan.
 
-Mijn voorstel om een app te maken die mensen (doelgroep = waarschijnlijk de nieuwe generatie) spelenderwijs leert welke emoticons gebruikt kunnen worden om bepaalde emoties te tonen via een chatapplicatie. Hierdoor kan een eendrachtig gebruik van emoticons gecreëerd worden onder de nieuwe generatie, zodat misverstanden en de negatieve gevolgen daarvan voorkomen kunnen worden.
-
-### Schets in woorden
-Een emotie in woorden voorleggen aan de gebruikers en ze dan vragen welke emoticon het beste bij deze emotie past (kan wellicht wat meer spelenderwijs). Een extra idee van degene met wie ik de app graag samen wil gaan maken (Marijn Meijering), is het leren uiten en begrijpen van emoties en het leren van emoticons die begrepen moeten worden bij uiting en begrip van emoties bij gebruik van chatapplicaties. Dit is voornamelijk geschikt voor autistische kinderen, omdat zij moeite hebben met uiting en begrip van emoties.
+### Schets
+https://share.proto.io/DXBMU8/
 
 ## Prerequisites
 
 ### Data sources
-https://emojipedia.org/emojipedia-api/
+- Google Maps API
+- Google Weather API
 
 ### External components
 
