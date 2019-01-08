@@ -17,7 +17,7 @@ https://share.proto.io/DXBMU8/
 
 ### Data sources
 - Google Maps API
-- Google Weather API (om weer en wind op de spot te tonen aan de gebruiker)
+- OpenWeatherMap API (om weer en wind op de spot te tonen aan de gebruiker)
 
 ### External components
 
