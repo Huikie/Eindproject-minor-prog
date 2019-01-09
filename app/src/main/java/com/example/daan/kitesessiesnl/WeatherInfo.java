@@ -32,4 +32,5 @@ public class WeatherInfo {
     public void setTemperature(Integer temperature) {
         this.temperature = temperature;
     }
+
 }

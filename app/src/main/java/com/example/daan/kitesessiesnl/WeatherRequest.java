@@ -35,8 +35,7 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
      *  that it is done through the callback. */
     public void getWeatherInfo(Callback activity, Double lat, Double lon){
         callback_activity = activity;
-        String json_url = "https://samples.openweathermap.org/data/2.5/weather?lat="+ lat +"&lon="+ lon +"&appid=3202ffc700f83be2f43e2114aa41d0a3";
-        //http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
+        String json_url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=3202ffc700f83be2f43e2114aa41d0a3";
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(json_url, null, this,this);
         queue.add(jsonObjectRequest);
@@ -56,12 +55,8 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
             Integer windspeed = response.getJSONObject("wind").getInt("speed");
             Integer winddegrees = response.getJSONObject("wind").getInt("deg");
             Integer temperature = response.getJSONObject("main").getInt("temp");
-            Log.d("speed", windspeed.toString());
-            Log.d("degrees", winddegrees.toString());
-            Log.d("temperature", temperature.toString());
             WeatherInfo weatherInfo = new WeatherInfo(windspeed, winddegrees, temperature);
-
-
+            Log.d("weatherInfo", weatherInfo.getSpeed().toString());
             // Pass the ArrayList back to the activity that wanted to have it.
             callback_activity.gotWeatherInfo(weatherInfo);
 
@@ -69,7 +64,6 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
 
         catch(JSONException e){
             System.out.println(e.toString());
-
         }
 
 

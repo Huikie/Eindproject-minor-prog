@@ -1,7 +1,9 @@
 package com.example.daan.kitesessiesnl;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,24 +13,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Locale;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, WeatherRequest.Callback {
-
-    WeatherInfo weatherinfoApp;
-
-    @Override
-    public void gotWeatherInfo(WeatherInfo weatherInfo) {
-        weatherinfoApp = weatherInfo;
-        Toast.makeText(this, weatherInfo.toString(), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void gotWeatherInfoError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     // Create a LatLngBounds that includes the Netherlands.
@@ -62,25 +52,59 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setLatLngBoundsForCameraTarget(NETHERLANDS);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
-        setMapLongClick(mMap);
-    }
-    private void setMapLongClick(final GoogleMap map){
-        map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.6344,5.1221))
+                .title("Schellinkhout"));
+
+                //.snippet(snippet));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.8614, 5.4602))
+                .title("Mirns"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(51.766667,3.86))
+                .title("Brouwersdam"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.2433, 4.4347))
+                .title("Noordwijk aan Zee"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.958, 4.7603))
+                .title("Den Helder"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.7249, 4.6512))
+                .title("Camperduin"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.4939, 4.5937))
+                .title("Wijk aan Zee"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(52.1062, 4.2753))
+                .title("Scheveningen"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(53.4035, 6.2141))
+                .title("Lauwersoog"));
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
-            public void onMapLongClick(LatLng latLng) {
+            public void onInfoWindowClick(Marker marker) {
+                Bundle bundle1 = new Bundle();
+                Bundle bundle2 = new Bundle();
 
-                WeatherRequest x = new WeatherRequest(MapsActivity.this);
-                x.getWeatherInfo(MapsActivity.this, latLng.latitude, latLng.longitude);
+                bundle1.putParcelable("LatLng", marker.getPosition());
+                bundle2.putString("Title", marker.getTitle());
 
-                String snippet = String.format(Locale.getDefault(),
-                        "Lat: %1$.5f, Long: %2$.5f",
-                        latLng.latitude,
-                        latLng.longitude);
+                Intent intent = new Intent(MapsActivity.this, SpotDetailsActivity.class);
+                intent.putExtras(bundle1);
+                intent.putExtras(bundle2);
 
-                map.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title("hans")
-                        .snippet(snippet));
+                startActivity(intent);
             }
         });
     }

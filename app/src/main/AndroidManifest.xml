@@ -10,6 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To overcome the "Android java.net.UnknownHostException" error
+    Source: https://stackoverflow.com/questions/3514398/android-java-net-unknownhostexception-host-is-unresolved
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SpotDetailsActivity"></activity>
     </application>
 
 </manifest>
