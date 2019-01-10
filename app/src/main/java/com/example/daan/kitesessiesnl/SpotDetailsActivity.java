@@ -15,19 +15,19 @@ import java.util.concurrent.ExecutionException;
 
 public class SpotDetailsActivity extends AppCompatActivity implements WeatherRequest.Callback {
 
+    /**This method receives the weatherinfo if the request has been made successfully.*/
     @Override
     public void gotWeatherInfo(WeatherInfo weatherInfo) {
-        Log.d("weatherInfo2", weatherInfo.getSpeed().toString());
         TextView windspeed = findViewById(R.id.windspeed);
         TextView winddegrees = findViewById(R.id.winddegrees);
         TextView temperature = findViewById(R.id.temperature);
 
-        // Convert m/s to knots
+        // Convert m/s to knots & round.
         Double knots = weatherInfo.getSpeed() * 1.94375;
         Double roundKnots = Double.valueOf(new DecimalFormat("#.#").format(
                 knots));
 
-        // Convert Kelvin to Celsius
+        // Convert Kelvin to Celsius & round.
         Double celsius = weatherInfo.getTemperature() - 273.15;
         Double roundCelsius = Double.valueOf(new DecimalFormat("#.#").format(
                 celsius));
@@ -124,7 +124,17 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
             }
         }
+        /**Method that directs users from the spotdetails page to the page where they can create a session */
         public void createSession(View view){
+        Intent intent1 = getIntent();
+        String title = intent1.getStringExtra("Title");
 
+        //Bundle bundle = new Bundle();
+        //bundle.putString("Title",title);
+
+        Intent intent2 = new Intent(this,CreateSessionActivity.class);
+        intent2.putExtra("Title",title);
+
+        startActivity(intent2);
     }
     }

@@ -21,6 +21,7 @@ import java.util.Locale;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
+
     // Create a LatLngBounds that includes the Netherlands.
     private LatLngBounds NETHERLANDS = new LatLngBounds(
             new LatLng(51.803721015, 3.31497114423), new LatLng( 53.0104033474, 6.09205325687));
@@ -94,26 +95,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Bundle bundle1 = new Bundle();
-                Bundle bundle2 = new Bundle();
+                Bundle coordinates = new Bundle();
+                coordinates.putParcelable("LatLng", marker.getPosition());
 
-                bundle1.putParcelable("LatLng", marker.getPosition());
-                bundle2.putString("Title", marker.getTitle());
+                String title = marker.getTitle();
 
                 Intent intent = new Intent(MapsActivity.this, SpotDetailsActivity.class);
-                intent.putExtras(bundle1);
-                intent.putExtras(bundle2);
+                intent.putExtras(coordinates);
+                intent.putExtra("Title",title);
 
                 startActivity(intent);
             }
         });
     }
+
+    /**Method that makes it possible for users to zoom in/out on the map using two buttons.*/
     public void onZoom(View view){
+
+        // Zoom in
         if(view.getId() == R.id.zoom_In){
             mMap.animateCamera(CameraUpdateFactory.zoomIn());
         }
+
+        // Zoom out (only if zoom level > 7.8 (so that the map keeps restricted to the Dutch boundaries) & zoom level is not equal to 7 (begin situation))
         if(view.getId() == R.id.zoom_Out && mMap.getCameraPosition().zoom > 7.8 && mMap.getCameraPosition().zoom != 7){
             mMap.animateCamera(CameraUpdateFactory.zoomOut());
         }
+    }
+
+    /**Method that directs the user from the map to the spotrequest page if the users click on the spotrequest button.*/
+    public void spotRequest(View view){
+        Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
+        startActivity(intent);
     }
 }

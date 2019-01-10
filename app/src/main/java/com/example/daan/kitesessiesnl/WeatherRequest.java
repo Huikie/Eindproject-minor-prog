@@ -30,8 +30,8 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
         this.context = context;
     }
 
-    /**This method will attempt to retrieve the menuitem that is clicked on (category parameter)
-     *  from the API, and if succesful, will notify the activity that instantiated the request
+    /**This method will attempt to retrieve weatherinfo from the API from the coordinates of the marker
+     * where the user did click on, and if succesful, will notify the activity that instantiated the request
      *  that it is done through the callback. */
     public void getWeatherInfo(Callback activity, Double lat, Double lon){
         callback_activity = activity;
@@ -56,7 +56,7 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
             Integer winddegrees = response.getJSONObject("wind").getInt("deg");
             Integer temperature = response.getJSONObject("main").getInt("temp");
             WeatherInfo weatherInfo = new WeatherInfo(windspeed, winddegrees, temperature);
-            Log.d("weatherInfo", weatherInfo.getSpeed().toString());
+
             // Pass the ArrayList back to the activity that wanted to have it.
             callback_activity.gotWeatherInfo(weatherInfo);
 
