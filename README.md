@@ -20,8 +20,10 @@ https://share.proto.io/DXBMU8/
 - OpenWeatherMap API (om weer en wind op de spot te tonen aan de gebruiker)
 
 ### External components
+- https://ide50-huikie.legacy.cs50.io:8080/ < gebruiken als online database?
 
 ### Similar
+- http://www.kitetracker.com/gps/livemap > Kitetracker laat mensen op een bepaalde locatie een sessie aanmaken en geeft dan voornamelijk informatie over de kiter. Ik ben van plan kiters op bepaalde spots een sessie aan te laten maken en zowel informatie over de spot te tonen als informatie over de aanwezige kiters.
 
 ### Hardest parts
-
+- Het nodig hebben van een online database. Hebben we dat niet bij Trivia gebruikt voor het leaderboard?
