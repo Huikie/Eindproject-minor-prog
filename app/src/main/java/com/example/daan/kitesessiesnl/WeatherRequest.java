@@ -30,11 +30,13 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
         this.context = context;
     }
 
-    /**This method will attempt to retrieve weatherinfo from the API from the coordinates of the marker
-     * where the user did click on, and if succesful, will notify the activity that instantiated the request
+    /**This method will attempt to retrieve weather info from the API from the coordinates of the marker
+     * where the user did click on, and if successful, will notify the activity that instantiated the request
      *  that it is done through the callback. */
     public void getWeatherInfo(Callback activity, Double lat, Double lon){
         callback_activity = activity;
+
+        //Do an API request to an url and put the latitude and longitude from the marker that is clicked on the right places in the url.
         String json_url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=3202ffc700f83be2f43e2114aa41d0a3";
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(json_url, null, this,this);

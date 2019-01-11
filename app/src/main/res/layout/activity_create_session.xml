@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
-        android:hint="Kitematen (8m)"
+        android:hint="Kitematen (8m en 10m)"
         android:inputType="textPersonName" />
 
     <EditText

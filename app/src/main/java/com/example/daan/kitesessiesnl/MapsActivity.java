@@ -54,6 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
 
+
+
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(52.6344,5.1221))
                 .title("Schellinkhout"));

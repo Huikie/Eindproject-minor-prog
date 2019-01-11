@@ -1,14 +1,17 @@
 package com.example.daan.kitesessiesnl;
 
+// Module class that contains weatherinfo.
 public class WeatherInfo {
     private Integer speed, degrees, temperature;
 
+    // Constructor.
     public WeatherInfo(Integer speed, Integer degrees, Integer temperature) {
         this.speed = speed;
         this.degrees = degrees;
         this.temperature = temperature;
     }
 
+    // Getters & setters.
     public Integer getSpeed() {
         return speed;
     }
