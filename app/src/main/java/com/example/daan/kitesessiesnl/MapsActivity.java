@@ -1,6 +1,8 @@
 package com.example.daan.kitesessiesnl;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,15 +18,51 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SpotGetRequest.Callback, SpotPostRequest.Callback{
 
     private GoogleMap mMap;
+    private Boolean firstTime = null;
 
     // Create a LatLngBounds that includes the Netherlands.
     private LatLngBounds NETHERLANDS = new LatLngBounds(
             new LatLng(51.803721015, 3.31497114423), new LatLng( 53.0104033474, 6.09205325687));
+
+    Boolean post_status = false;
+
+    @Override
+    public void postedSpots(Boolean status) {
+        post_status = status;
+    }
+
+    @Override
+    public void postedSpotsError(String message) {
+
+    }
+
+    @Override
+    public void gotSpots(ArrayList<Spot> spots) {
+        try{
+            for(Spot spot:spots){
+                mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(),spot.getLon())).title(spot.getName()));
+                Log.d("succes", spot.getName());
+            }
+        }catch(Exception e){
+            Log.d("bug", e.toString());
+        }
+
+//                mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(spots.get(0).getLat(), spots.get(0).getLon())).title(spots.get(0).getName()));
+    }
+
+    @Override
+    public void gotSpotsError(String message) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +72,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+//        if(isFirstTime()) {
+            // Getting the right reference to all drawables.
+            int camperduin_image = getResources().getIdentifier("camperduin", "drawable", getPackageName());
+            int camperduin_directions = getResources().getIdentifier("camperduin_richtingen", "drawable", getPackageName());
+
+            // Hard coded spots.
+            Spot Camperduin = new Spot("Camperduin", "Zee & Lagune", "Zand", 500, camperduin_image, camperduin_directions, 52.7249, 4.6512);
+            Spot Wijk_aan_Zee = new Spot("Wijk aan Zee", "Zee & Lagune", "Zand", 500, camperduin_image, camperduin_directions, 51.7249, 3.6512);
+
+            List<Spot> spotList = new ArrayList<>();
+            spotList.add(Camperduin);
+            spotList.add(Wijk_aan_Zee);
+
+            //Post spots to an online database.
+            for (Spot spot : spotList) {
+                SpotPostRequest x = new SpotPostRequest(this);
+                x.postSpot(this,spot.getName(), spot.getType(), spot.getSurface(), spot.getDistance(), Camperduin.getImageId(), Camperduin.getDirectionId(), Camperduin.getLon(), Camperduin.getLat());
+            }
+
+//        }
     }
 
     /**
@@ -54,45 +113,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
 
-
-
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(52.6344,5.1221))
                 .title("Schellinkhout"));
 
-                //.snippet(snippet));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.8614, 5.4602))
-                .title("Mirns"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(51.766667,3.86))
-                .title("Brouwersdam"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.2433, 4.4347))
-                .title("Noordwijk aan Zee"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.958, 4.7603))
-                .title("Den Helder"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.7249, 4.6512))
-                .title("Camperduin"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.4939, 4.5937))
-                .title("Wijk aan Zee"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(52.1062, 4.2753))
-                .title("Scheveningen"));
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(53.4035, 6.2141))
-                .title("Lauwersoog"));
+        try{if(post_status == true){
+        SpotGetRequest x = new SpotGetRequest(this);
+        x.getSpots(this);
+        Log.d("true", "yes true");
+        }}catch(Exception e){
+            Log.d("buggg", e.toString());
+        }
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(51.766667,3.86))
+//                .title("Brouwersdam"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(52.2433, 4.4347))
+//                .title("Noordwijk aan Zee"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(52.958, 4.7603))
+//                .title("Den Helder"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(52.7249, 4.6512))
+//                .title("Camperduin"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(52.4939, 4.5937))
+//                .title("Wijk aan Zee"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(52.1062, 4.2753))
+//                .title("Scheveningen"));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(53.4035, 6.2141))
+//                .title("Lauwersoog"));
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -129,5 +188,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void spotRequest(View view){
         Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
         startActivity(intent);
+    }
+    /**
+     * Checks if the user is opening the app for the first time.
+     * Note that this method should be placed inside an activity and it can be called multiple times.
+     * @return boolean
+     * Source: http://www.andreabaccega.com/blog/2012/04/12/android-how-to-execute-some-code-only-on-first-time-the-application-is-launched/
+     */
+    private boolean isFirstTime() {
+        if (firstTime == null) {
+            SharedPreferences mPreferences = this.getSharedPreferences("first_time", Context.MODE_PRIVATE);
+            firstTime = mPreferences.getBoolean("firstTime", true);
+            if (firstTime) {
+                SharedPreferences.Editor editor = mPreferences.edit();
+                editor.putBoolean("firstTime", false);
+                editor.commit();
+            }
+        }
+        return firstTime;
     }
 }
