@@ -13,4 +13,5 @@
 - Bepaald dat de aanvragen voor spots door gebruikers in de database met spotinformatie komen en dat de spots in de deze database een parameter "status" krijgen die bepaald of ze zichtbaar zijn in de map of niet. Zo kan de beheerder (ik) deze status via de terminal wijzigen zodat spots zichtbaar worden als ze goedgekeurd zijn.
 # dag 5 - 14-jan
 - In overleg met assistent (Marijn) besloten om de spots die vanaf het begin in de applicatie te zien zijn handmatig toe te voegen aan de online spotinformatie database door een curl POST operatie in de CS50 terminal. Had de spots ook kunnen hardcoden in de app en dan kunnen posten, maar dit is me afgeraden.
+- Besloten om voorlopig af te wachten hoe om te gaan met afbeeldingen voor spots, omdat volgens assistent (Marijn) er mogelijk nog extra functionaliteit in de Rester API geimplementeerd gaat worden die de omgang hier mee makkelijker zou kunnen maken.
 # dag 6 - 15-jan
