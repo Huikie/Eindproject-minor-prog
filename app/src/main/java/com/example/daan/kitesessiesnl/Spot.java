@@ -6,10 +6,10 @@ import java.util.List;
 public class Spot {
 
     String name, type, surface;
-    Integer distance, imageId, directionId;
+    Integer distance, imageId, directionId, status;
     Double lat, lon;
 
-    public Spot(String name, String type, String surface, Integer distance, Integer imageId, Integer directionId, Double lat, Double lon) {
+    public Spot(String name, String type, String surface, Integer distance, Integer imageId, Integer directionId, Integer status, Double lat, Double lon) {
         this.name = name;
         this.type = type;
         this.surface = surface;
@@ -18,6 +18,15 @@ public class Spot {
         this.directionId = directionId;
         this.lat = lat;
         this.lon = lon;
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getName() {

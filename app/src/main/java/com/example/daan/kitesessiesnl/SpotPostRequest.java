@@ -17,16 +17,16 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
 
     Context context;
     String name, type, surface;
-    Integer distance, imageId, directionId;
+    Integer distance, imageId, directionId, status;
     Double lat,lon;
 
-    Callback callback_activity;
+//    Callback callback_activity;
 
     /**Method that makes a callback possible.*/
-    public interface Callback {
-        void postedSpots(Boolean status);
-        void postedSpotsError(String message);
-    }
+//    public interface Callback {
+//        void postedSpots(Boolean status);
+//        void postedSpotsError(String message);
+//    }
 
     // Class that makes a PostRequest possible.
     public class PostRequest extends StringRequest {
@@ -47,6 +47,7 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
             params.put("distance", distance.toString());
             params.put("imageId", imageId.toString());
             params.put("directionId", directionId.toString());
+            params.put("status", status.toString());
             params.put("lat", lat.toString());
             params.put("lon", lon.toString());
             return params;
@@ -58,17 +59,18 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
     }
 
     /**Method that posts the received name, kitesize, timespan & spot.*/
-    public void postSpot(Callback activity,String spot_name, String spot_type, String spot_surface, Integer spot_distance, Integer spot_imageId, Integer spot_directionId, Double spot_lat, Double spot_long){
-        callback_activity = activity;
+    public void postSpot(String spot_name, String spot_type, String spot_surface, Integer spot_distance, Integer spot_imageId, Integer spot_directionId, Integer spot_status, Double spot_lat, Double spot_long){
+//        callback_activity = activity;
         name = spot_name;
         type = spot_type;
         surface = spot_surface;
         distance = spot_distance;
         imageId = spot_imageId;
         directionId = spot_directionId;
+        status = spot_status;
         lat = spot_lat;
         lon = spot_long;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list2";
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list4";
         RequestQueue queue = Volley.newRequestQueue(context);
         SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST, json_url,this,this);
         queue.add(postRequest);
@@ -80,7 +82,6 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
 
     @Override
     public void onResponse(String response) {
-        callback_activity.postedSpots(true);
     }
 
 

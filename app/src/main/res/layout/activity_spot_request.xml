@@ -12,21 +12,69 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:padding="12dp"
         android:text="Vraag Spot Aan:"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/spotLocation"
+        android:id="@+id/spotName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Locatie Spot"
-        android:inputType="textPersonName" />
+        android:hint="Spot Naam"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/spotLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Locatie Latitude"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/spotLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Locatie Longitude"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/spotType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Type Spot (Meer)"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/spotSurface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ondergrond Spot"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/spotDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Afstand Spot"
+        android:inputType="textPersonName"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/doRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="submitRequest"
+        android:padding="12dp"
         android:text="Vraag Aan" />
 </LinearLayout>

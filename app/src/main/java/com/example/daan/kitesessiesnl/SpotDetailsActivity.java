@@ -118,9 +118,22 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         Intent intent = getIntent();
         LatLng coordinates = intent.getParcelableExtra("LatLng");
         String title = intent.getStringExtra("Title");
+        String type = intent.getStringExtra("Type");
+        String surface = intent.getStringExtra("Surface");
+        String distance = intent.getStringExtra("Distance");
 
         TextView spotdetailsTitle = findViewById(R.id.spotdetails_Title);
         spotdetailsTitle.setText(title);
+
+        TextView spotdetailsType = findViewById(R.id.type);
+        spotdetailsType.setText(type);
+
+        TextView spotdetailsSurface = findViewById(R.id.surface);
+        spotdetailsSurface.setText(surface);
+
+        TextView spotdetailsDistance = findViewById(R.id.distance);
+        spotdetailsDistance.setText(distance);
+
 
         WeatherRequest x = new WeatherRequest(this);
         try {

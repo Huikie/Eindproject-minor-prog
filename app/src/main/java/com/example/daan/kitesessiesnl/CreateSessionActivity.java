@@ -38,10 +38,11 @@ public class CreateSessionActivity extends AppCompatActivity {
         EditText time = findViewById(R.id.timespan);
         String time_txt = time.getText().toString();
 
-        //Post session information of a user to an online database.
+        // Post session information of a user to an online database.
         SessionPostRequest x = new SessionPostRequest(this);
         x.postSession(name_txt, kite_txt, time_txt, spotTitle_txt);
 
+        // Heads the user back to the map activity after he/she started a session.
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
 

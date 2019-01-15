@@ -36,7 +36,7 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
     /**Method that gets the sessions from the API.*/
     public void getSpots(Callback activity){
         callback_activity = activity;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list2";
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list4";
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(json_url,this,this);
         queue.add(jsonArrayRequest);
@@ -44,7 +44,7 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        callback_activity.gotSpotsError(error.getMessage());
     }
 
     @Override
@@ -58,9 +58,10 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
                 Integer distance = parseInt(session_info.getString("distance"));
                 Integer imageId = parseInt(session_info.getString("imageId"));
                 Integer directionId = parseInt(session_info.getString("directionId"));
+                Integer status = parseInt(session_info.getString("status"));
                 Double lat = parseDouble(session_info.getString("lat"));
                 Double lon = parseDouble(session_info.getString("lon"));
-                spots.add(new Spot(name,type,surface,distance,imageId,directionId,lat,lon));
+                spots.add(new Spot(name,type,surface,distance,imageId,directionId,status,lat,lon));
 
             }
             // The sessions ArrayList is send to the activity that wanted it.
