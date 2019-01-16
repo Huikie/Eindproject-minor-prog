@@ -1,5 +1,6 @@
 package com.example.daan.kitesessiesnl;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,12 +8,18 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -91,32 +98,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+//        SessionRequest x = new SessionRequest(this);
+//        x.getSessions(this);
 
             // Getting the right reference to all drawables.
 //            int camperduin_image = getResources().getIdentifier("camperduin", "drawable", getPackageName());
 //            int camperduin_directions = getResources().getIdentifier("camperduin_richtingen", "drawable", getPackageName());
-//
-//            // Hard coded spots.
-//            Spot Camperduin = new Spot("Camperduin", "Zee & Lagune", "Zand", 500, camperduin_image, camperduin_directions, 52.7249, 4.6512);
-//            Spot Wijk_aan_Zee = new Spot("Wijk aan Zee", "Zee & Lagune", "Zand", 500, camperduin_image, camperduin_directions, 51.7249, 3.6512);
-//
-//
-//
-//            List<Spot> spotList = new ArrayList<>();
-//            spotList.add(Camperduin);
-//            spotList.add(Wijk_aan_Zee);
-
-            //Post spots to an online database.
-//            for (Spot spot : spotList) {
-//                SpotPostRequest x = new SpotPostRequest(this);
-//                x.postSpot(spot.getName(), spot.getType(), spot.getSurface(), spot.getDistance(), Camperduin.getImageId(), Camperduin.getDirectionId(), Camperduin.getLon(), Camperduin.getLat());
-//                Log.d("spotinfo",""+Camperduin.getImageId()+" "+ Camperduin.getDirectionId());
-//            }
-
-//        }
     }
 
     /**
@@ -132,42 +123,82 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        Spinner mapTypes = findViewById(R.id.mapTypes);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.mapsViews));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mapTypes.setAdapter(myAdapter);
+
+        mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(id == 0){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                else if(id == 1){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                }
+                else if(id == 2){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                }
+                else if(id == 3){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                }
+                }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ImageButton spotRequestButton = findViewById(R.id.spotRequest);
+        spotRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MapsActivity.this, LongClickInfo.class));
+            }
+        });
+
+//        mMap.getUiSettings().setZoomControlsEnabled(true);
+//
+//        try{
+//
+//            @SuppressLint("ResourceType") View zoomControls = mMap.getProjection().;
+//
+//            for(int i = 0; i<((ViewGroup)zoomControls).getChildCount(); i++){
+//                View child=((ViewGroup)zoomControls).getChildAt(i);
+//                if (i==0) {
+//                    // there is your "+" button, zoom in
+//
+//                }
+//                if (i==1 && mMap.getCameraPosition().zoom < 7.8 && mMap.getCameraPosition().zoom == 7) {
+//                    // there is your "-" button, I hide it in this example
+//                    child.setVisibility(View.GONE);
+//                }
+//            }}catch(Exception e){
+//            Log.d("bug", e.toString());
+//
+//        }
+
         // Constrain the camera target to the Netherlands bounds.
         mMap.setLatLngBoundsForCameraTarget(NETHERLANDS);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
 
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(52.6344,5.1221))
-//                .title("Schellinkhout"));
-
         SpotGetRequest x = new SpotGetRequest(this);
         x.getSpots(this);
-//
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(51.766667,3.86))
-//                .title("Brouwersdam"));
-//
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(52.2433, 4.4347))
-//                .title("Noordwijk aan Zee"));
-//
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(52.958, 4.7603))
-//                .title("Den Helder"));
-//
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(52.7249, 4.6512))
-//                .title("Camperduin"));
-//
 
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(52.1062, 4.2753))
-//                .title("Scheveningen"));
-//
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(53.4035, 6.2141))
-//                .title("Lauwersoog"));
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                Log.d("latlng", latLng.toString());
+                Bundle coordinates = new Bundle();
+                coordinates.putParcelable("LatLng", latLng);
+                Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
+                intent.putExtras(coordinates);
+                startActivity(intent);
+            }
+        });
     }
 
     /**Method that makes it possible for users to zoom in/out on the map using two buttons.*/
@@ -184,27 +215,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    /**Method that directs the user from the map to the spotrequest page if the users click on the spotrequest button.*/
-    public void spotRequest(View view){
-        Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
-        startActivity(intent);
-    }
-//    /**
-//     * Checks if the user is opening the app for the first time.
-//     * Note that this method should be placed inside an activity and it can be called multiple times.
-//     * @return boolean
-//     * Source: http://www.andreabaccega.com/blog/2012/04/12/android-how-to-execute-some-code-only-on-first-time-the-application-is-launched/
-//     */
-//    private boolean isFirstTime() {
-//        if (firstTime == null) {
-//            SharedPreferences mPreferences = this.getSharedPreferences("first_time", Context.MODE_PRIVATE);
-//            firstTime = mPreferences.getBoolean("firstTime", true);
-//            if (firstTime) {
-//                SharedPreferences.Editor editor = mPreferences.edit();
-//                editor.putBoolean("firstTime", false);
-//                editor.commit();
-//            }
-//        }
-//        return firstTime;
-//    }
 }

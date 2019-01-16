@@ -3,6 +3,7 @@ package com.example.daan.kitesessiesnl;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -60,45 +61,44 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         Double roundCelsius = Double.valueOf(new DecimalFormat("#.#").format(
                 celsius));
 
-        windspeed.setText(roundKnots.toString() + " " + "knopen");
-        temperature.setText(roundCelsius.toString() + " " + "℃");
+        windspeed.setText(Html.fromHtml("<b>Actuele windsnelheid:</b> "+roundKnots.toString() + " " + "knopen"));
+        temperature.setText(Html.fromHtml("<b>Temperatuur:</b> "+roundCelsius.toString() + " " + "℃"));
 
         // Determined the wind direction in letters based on the degree received from the API.
         // Source: https://uni.edu/storm/Wind%20Direction%20slide.pdf
         if (weatherInfo.getDegrees() <= 360 && weatherInfo.getDegrees() >= 350 || weatherInfo.getDegrees() <= 10) {
-            winddegrees.setText("N" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
-        } else if (weatherInfo.getDegrees() <= 340 && weatherInfo.getDegrees() >= 330) {
-            winddegrees.setText("NNW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
-        } else if (weatherInfo.getDegrees() <= 30 && weatherInfo.getDegrees() >= 20) {
-            winddegrees.setText("NNO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText("<b>Windrichting:</b> " +"N" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+        }
+          else if (weatherInfo.getDegrees() <= 30 && weatherInfo.getDegrees() >= 20) {
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NNO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 50 && weatherInfo.getDegrees() >= 40) {
-            winddegrees.setText("NO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 70 && weatherInfo.getDegrees() >= 60) {
-            winddegrees.setText("ONO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"ONO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 100 && weatherInfo.getDegrees() >= 80) {
-            winddegrees.setText("O" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"O" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 120 && weatherInfo.getDegrees() >= 110) {
-            winddegrees.setText("OZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"OZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 140 && weatherInfo.getDegrees() >= 130) {
-            winddegrees.setText("ZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"ZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 160 && weatherInfo.getDegrees() >= 150) {
-            winddegrees.setText("ZZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"ZZO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 190 && weatherInfo.getDegrees() >= 170) {
-            winddegrees.setText("Z" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"Z" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 210 && weatherInfo.getDegrees() >= 200) {
-            winddegrees.setText("ZZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"ZZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 230 && weatherInfo.getDegrees() >= 220) {
-            winddegrees.setText("ZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"ZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 250 && weatherInfo.getDegrees() >= 240) {
-            winddegrees.setText("WZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"WZW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 280 && weatherInfo.getDegrees() >= 260) {
-            winddegrees.setText("W" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"W" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 300 && weatherInfo.getDegrees() >= 290) {
-            winddegrees.setText("WNW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"WNW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 320 && weatherInfo.getDegrees() >= 310) {
-            winddegrees.setText("NW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 340 && weatherInfo.getDegrees() >= 330) {
-            winddegrees.setText("NNW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NNW" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else {
             winddegrees.setText(weatherInfo.getDegrees().toString());
         }
@@ -126,13 +126,13 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         spotdetailsTitle.setText(title);
 
         TextView spotdetailsType = findViewById(R.id.type);
-        spotdetailsType.setText(type);
+        spotdetailsType.setText(Html.fromHtml("<b>Spot type:</b> "+type));
 
         TextView spotdetailsSurface = findViewById(R.id.surface);
-        spotdetailsSurface.setText(surface);
+        spotdetailsSurface.setText(Html.fromHtml("<b>Spot ondergrond:</b> "+surface));
 
         TextView spotdetailsDistance = findViewById(R.id.distance);
-        spotdetailsDistance.setText(distance);
+        spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "<br>"));
 
 
         WeatherRequest x = new WeatherRequest(this);

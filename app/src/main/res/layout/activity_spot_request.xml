@@ -26,24 +26,6 @@
         android:padding="12dp" />
 
     <EditText
-        android:id="@+id/spotLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Locatie Latitude"
-        android:inputType="textPersonName"
-        android:padding="12dp" />
-
-    <EditText
-        android:id="@+id/spotLon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Locatie Longitude"
-        android:inputType="textPersonName"
-        android:padding="12dp" />
-
-    <EditText
         android:id="@+id/spotType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -49,6 +49,9 @@
         <activity android:name=".SpotDetailsActivity" />
         <activity android:name=".CreateSessionActivity" />
         <activity android:name=".SpotRequestActivity"></activity>
+        <activity android:name=".LongClickInfo"
+            android:theme="@style/AppTheme.MyTheme">
+        </activity>
     </application>
 
 </manifest>
