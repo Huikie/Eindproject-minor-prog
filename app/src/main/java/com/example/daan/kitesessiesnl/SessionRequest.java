@@ -35,7 +35,7 @@ public class SessionRequest implements Response.Listener<JSONArray>, Response.Er
     /**Method that gets the sessions from the API.*/
     public void getSessions(Callback activity){
         callback_activity = activity;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list";
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(json_url,this,this);
         queue.add(jsonArrayRequest);
@@ -57,9 +57,11 @@ public class SessionRequest implements Response.Listener<JSONArray>, Response.Er
                 String name = session_info.getString("name");
                 String kite = session_info.getString("kite");
                 String time = session_info.getString("time");
-                sessions.add(new Session(name,kite,time,spot));
+                String date = session_info.getString("date");
+                sessions.add(new Session(name,kite,time,spot,date));
 
             }
+
             // The sessions ArrayList is send to the activity that wanted it.
             callback_activity.gotSessions(sessions);
         }

@@ -3,12 +3,14 @@ package com.example.daan.kitesessiesnl;
 import java.util.ArrayList;
 import java.util.List;
 
+// Module class for a spot.
 public class Spot {
 
     String name, type, surface;
     Integer distance, imageId, directionId, status;
     Double lat, lon;
 
+    // Constructor.
     public Spot(String name, String type, String surface, Integer distance, Integer imageId, Integer directionId, Integer status, Double lat, Double lon) {
         this.name = name;
         this.type = type;
@@ -21,6 +23,7 @@ public class Spot {
         this.status = status;
     }
 
+    // Getters & Setters
     public Integer getStatus() {
         return status;
     }

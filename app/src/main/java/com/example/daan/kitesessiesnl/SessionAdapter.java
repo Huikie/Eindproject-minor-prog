@@ -16,17 +16,21 @@ public class SessionAdapter extends ArrayAdapter<Session> {
 
     ArrayList<Session> session;
 
+    // Constructor.
     public SessionAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Session> objects) {
         super(context, resource, objects);
         session = objects;
     }
+
     @NonNull
     @Override
-    /**Custom view adapter that can be used to get the user's name, kitesize(s) and timespan nicely in a ListView*/
+    /**Custom view adapter that can be used to get the user's name, kitesize(s) and timespan nicely in a ListView.*/
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.session, parent, false);
         }
+
         int index = position;
         TextView name = convertView.findViewById(R.id.name);
         TextView kitesize = convertView.findViewById(R.id.kitesize);

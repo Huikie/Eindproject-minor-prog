@@ -1,6 +1,6 @@
 package com.example.daan.kitesessiesnl;
 
-// Module class that contains weatherinfo.
+// Module class for weatherinfo.
 public class WeatherInfo {
     private Integer speed, degrees, temperature;
 

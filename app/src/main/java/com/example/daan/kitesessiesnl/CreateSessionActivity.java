@@ -1,6 +1,7 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class CreateSessionActivity extends AppCompatActivity {
 
     @Override
@@ -17,12 +22,16 @@ public class CreateSessionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_session);
 
+        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        // Get the name from the spot where the user wants to start a session.
         Intent intent = getIntent();
         String title = intent.getStringExtra("Title");
 
         TextView sessionTitle = findViewById(R.id.sessionTitle);
         sessionTitle.setText(title);
     }
+
     /**Method that lets users start a session with their information.*/
     public void startSession(View view){
 
@@ -38,9 +47,12 @@ public class CreateSessionActivity extends AppCompatActivity {
         EditText time = findViewById(R.id.timespan);
         String time_txt = time.getText().toString();
 
+        // Create a timestamp to keep track when the user started his session.
+        String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
         // Post session information of a user to an online database.
         SessionPostRequest x = new SessionPostRequest(this);
-        x.postSession(name_txt, kite_txt, time_txt, spotTitle_txt);
+        x.postSession(name_txt, kite_txt, time_txt, spotTitle_txt, timeStamp);
 
         // Heads the user back to the map activity after he/she started a session.
         Intent intent = new Intent(this, MapsActivity.class);

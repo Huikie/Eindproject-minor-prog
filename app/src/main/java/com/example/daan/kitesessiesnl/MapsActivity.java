@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,27 +41,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /**Method that gets the spots from the API.*/
     @Override
-    public void gotSpots(final ArrayList<Spot> spots) {
-        try{
-            for(Spot spot:spots){
+    public void gotSpots(final ArrayList<Spot> spots){
 
-                // If the spot status is equal to 1 add a marker for the spot on the map.
-                if(spot.getStatus() == 1) {
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName()));
-                    }
-                }
-        }catch(Exception e){
-            Toast.makeText(this, e.toString(),
-                    Toast.LENGTH_LONG).show();
+        // For every spot in the spots ArrayList.
+        for(Spot spot:spots){
+
+            // If the spot status is equal to 1 (approved) add a marker for the spot on the map.
+            if(spot.getStatus() == 1){
+                mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName()));
+            }
         }
 
         // Makes the info window of a marker clickable and sends the user to the information of the marker (spot) when the user clicks on the info window of the marker.
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
+
+                // Gets the title of the marker that the user clicked on.
                 String title = marker.getTitle();
+
+                // For every spot in the spots ArrayList.
                 for (Spot spot : spots) {
+                    // If the spot status is equal to 1 (approved) and the spot name is equal to the spot where the user clicked on, then direct the user to the SpotDetailsActivity and send spotinformation along with that direction.
                     if (spot.getName().equals(title) && spot.getStatus() == 1) {
+
                         Bundle coordinates = new Bundle();
                         coordinates.putParcelable("LatLng", marker.getPosition());
 
@@ -72,6 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         Integer spot_wind_directions = spot.getDirectionId();
 
                         Intent intent = new Intent(MapsActivity.this, SpotDetailsActivity.class);
+
                         intent.putExtras(coordinates);
                         intent.putExtra("Title", title);
                         intent.putExtra("Type", spot_type);
@@ -97,24 +102,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-//        SessionRequest x = new SessionRequest(this);
-//        x.getSessions(this);
-
-            // Getting the right reference to all drawables.
-//            int camperduin_image = getResources().getIdentifier("camperduin", "drawable", getPackageName());
-//            int camperduin_directions = getResources().getIdentifier("camperduin_richtingen", "drawable", getPackageName());
     }
 
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * This is where we can add markers or lines, add listeners or move the camera.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -123,6 +123,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        // Create a Spinner with the different Googlemap types so that the user can choose which maptype the users wants.
         Spinner mapTypes = findViewById(R.id.mapTypes);
         ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.mapsViews));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -151,6 +152,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        // Create a ImageButton with an "addmarkericon" in it. If the users clicks this button it will see a pop up window with information about how to add a marker to the map.
         ImageButton spotRequestButton = findViewById(R.id.spotRequest);
         spotRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,39 +161,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-//        mMap.getUiSettings().setZoomControlsEnabled(true);
-//
-//        try{
-//
-//            @SuppressLint("ResourceType") View zoomControls = mMap.getProjection().;
-//
-//            for(int i = 0; i<((ViewGroup)zoomControls).getChildCount(); i++){
-//                View child=((ViewGroup)zoomControls).getChildAt(i);
-//                if (i==0) {
-//                    // there is your "+" button, zoom in
-//
-//                }
-//                if (i==1 && mMap.getCameraPosition().zoom < 7.8 && mMap.getCameraPosition().zoom == 7) {
-//                    // there is your "-" button, I hide it in this example
-//                    child.setVisibility(View.GONE);
-//                }
-//            }}catch(Exception e){
-//            Log.d("bug", e.toString());
-//
-//        }
-
         // Constrain the camera target to the Netherlands bounds.
         mMap.setLatLngBoundsForCameraTarget(NETHERLANDS);
 
+        // Move the camera to the center of the Netherlands.
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
 
+        // Do a SpotGetRequest to get the spots from the API and to be able to add markers for them.
         SpotGetRequest x = new SpotGetRequest(this);
         x.getSpots(this);
 
+        // When the user clicks long on the map they will be able to do a SpotRequest.
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                Log.d("latlng", latLng.toString());
                 Bundle coordinates = new Bundle();
                 coordinates.putParcelable("LatLng", latLng);
                 Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
@@ -201,18 +184,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    /**Method that makes it possible for users to zoom in/out on the map using two buttons.*/
-    public void onZoom(View view){
-
-        // Zoom in
-        if(view.getId() == R.id.zoom_In){
-            mMap.animateCamera(CameraUpdateFactory.zoomIn());
-        }
-
-        // Zoom out (only if zoom level > 7.8 (so that the map keeps restricted to the Dutch boundaries) & zoom level is not equal to 7 (begin situation))
-        if(view.getId() == R.id.zoom_Out && mMap.getCameraPosition().zoom > 7.8 && mMap.getCameraPosition().zoom != 7){
-            mMap.animateCamera(CameraUpdateFactory.zoomOut());
-        }
+    /**Method that makes it possible for the user to refresh the page, so that they can see if spots are added.*/
+    public void onRefresh(View view){
+        Intent intent = getIntent();
+        finish();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 
+    /**Method that directs the users to an activity where they can see all the sessions from today.*/
+    public void getAllSessions(View view){
+        Intent intent = new Intent(MapsActivity.this, CurrentSessionsActivity.class);
+        startActivity(intent);
+    }
 }

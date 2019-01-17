@@ -33,21 +33,23 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
         this.context = context;
     }
 
-    /**Method that gets the sessions from the API.*/
+    /**Method that gets the spots from the API.*/
     public void getSpots(Callback activity){
         callback_activity = activity;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list4";
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(json_url,this,this);
         queue.add(jsonArrayRequest);
     }
 
     @Override
+    /**The spots aren't received successfully, an error message will be displayed.*/
     public void onErrorResponse(VolleyError error) {
         callback_activity.gotSpotsError(error.getMessage());
     }
 
     @Override
+    /**The spots are received successfully and will be added to the spots ArrayList.*/
     public void onResponse(JSONArray response) {
         try{
             for (int i = 0; i < response.length(); i++){
@@ -64,7 +66,8 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
                 spots.add(new Spot(name,type,surface,distance,imageId,directionId,status,lat,lon));
 
             }
-            // The sessions ArrayList is send to the activity that wanted it.
+
+            // The spots ArrayList is send to the activity that wanted it.
             callback_activity.gotSpots(spots);
         }
         catch(JSONException e){

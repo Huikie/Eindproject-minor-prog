@@ -2,7 +2,7 @@
     <string name="app_name">KiteSessiesNL</string>
     <string name="title_activity_maps">Map</string>
 
-    <string-array name="mapsViews">
+    <string-array name="mapsViews" fontsize="8">
         <item>Normaal</item>
         <item>Sateliet</item>
         <item>Terrein</item>

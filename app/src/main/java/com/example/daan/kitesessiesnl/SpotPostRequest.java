@@ -71,7 +71,7 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
         status = spot_status;
         lat = spot_lat;
         lon = spot_long;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list4";
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
         RequestQueue queue = Volley.newRequestQueue(context);
         SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST, json_url,this,this);
         queue.add(postRequest);

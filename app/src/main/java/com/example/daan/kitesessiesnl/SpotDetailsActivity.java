@@ -1,6 +1,7 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -28,7 +29,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         ArrayList<Session> s2 = new ArrayList<>();
         for (Session session: sessions) {
             if(session.getSpot().equals(title)){
-                s2.add(new Session(session.getName(),session.getKite(),session.getTime(),session.getSpot()));
+                s2.add(new Session(session.getName(),session.getKite(),session.getTime(),session.getSpot(),session.getDate()));
 
                 // Using the created SessionAdapter to put the spot's sessions nicely in a ListView.
                 SessionAdapter itemsAdapter = new SessionAdapter(this, R.layout.session, s2);
@@ -47,6 +48,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
     /**This method receives the weatherinfo if the request has been made successfully.*/
     @Override
     public void gotWeatherInfo(WeatherInfo weatherInfo) {
+
         TextView windspeed = findViewById(R.id.windspeed);
         TextView winddegrees = findViewById(R.id.winddegrees);
         TextView temperature = findViewById(R.id.temperature);
@@ -67,9 +69,8 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         // Determined the wind direction in letters based on the degree received from the API.
         // Source: https://uni.edu/storm/Wind%20Direction%20slide.pdf
         if (weatherInfo.getDegrees() <= 360 && weatherInfo.getDegrees() >= 350 || weatherInfo.getDegrees() <= 10) {
-            winddegrees.setText("<b>Windrichting:</b> " +"N" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")");
-        }
-          else if (weatherInfo.getDegrees() <= 30 && weatherInfo.getDegrees() >= 20) {
+            winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"N" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
+        } else if (weatherInfo.getDegrees() <= 30 && weatherInfo.getDegrees() >= 20) {
             winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NNO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
         } else if (weatherInfo.getDegrees() <= 50 && weatherInfo.getDegrees() >= 40) {
             winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"NO" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
@@ -115,6 +116,9 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot_details);
 
+        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        // Get information received from the marker that is clicked on.
         Intent intent = getIntent();
         LatLng coordinates = intent.getParcelableExtra("LatLng");
         String title = intent.getStringExtra("Title");
@@ -134,20 +138,19 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         TextView spotdetailsDistance = findViewById(R.id.distance);
         spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "<br>"));
 
-
+        // Do a WeatherRequest to get the current weatherinfo for the location of the marker that the user clicked on.
         WeatherRequest x = new WeatherRequest(this);
-        try {
-            x.getWeatherInfo(this, coordinates.latitude, coordinates.longitude);
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
-        }
+        x.getWeatherInfo(this, coordinates.latitude, coordinates.longitude);
 
+        // Do a SessionRequest to be able to show the user all the sessions that are started today.
         SessionRequest x2 = new SessionRequest(this);
         x2.getSessions(this);
+
         }
 
     /**Method that directs users from the spot details page to the page where they can create a session.*/
     public void createSession(View view) {
+
         Intent intent1 = getIntent();
         String title = intent1.getStringExtra("Title");
 

@@ -50,7 +50,7 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
     }
 
     @Override
-    /**When everything goes as expected the response parameter will contain a JSONObject.*/
+    /**When everything goes as expected the response parameter will contain a JSONObject with weatherinfo where the wanted information can be extracted from.*/
     public void onResponse(JSONObject response) {
         try {
 

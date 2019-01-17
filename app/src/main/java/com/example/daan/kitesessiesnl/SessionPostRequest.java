@@ -15,8 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SessionPostRequest implements Response.Listener<String>, Response.ErrorListener{
+
     Context context;
-    String name,kite,time,spot;
+    String name,kite,time,spot,date;
 
     // Class that makes a PostRequest possible.
     public class PostRequest extends StringRequest {
@@ -35,21 +36,24 @@ public class SessionPostRequest implements Response.Listener<String>, Response.E
             params.put("kite", kite);
             params.put("time", time);
             params.put("spot", spot);
+            params.put("date", date);
             return params;
         }
     }
 
+    // Constructor.
     public SessionPostRequest(Context context) {
         this.context = context;
     }
 
-    /**Method that posts the received name, kitesize, timespan & spot.*/
-    public void postSession(String kiter_name, String kiter_kite, String session_time, String session_spot){
+    /**Method that posts the received name, kitesize, timespan, spot, timespan and date.*/
+    public void postSession(String kiter_name, String kiter_kite, String session_time, String session_spot, String session_date){
         spot = session_spot;
         name = kiter_name;
         kite = kiter_kite;
         time = session_time;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/list";
+        date = session_date;
+        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
         RequestQueue queue = Volley.newRequestQueue(context);
         PostRequest postRequest = new PostRequest(Request.Method.POST, json_url,this,this);
         queue.add(postRequest);

@@ -82,7 +82,7 @@
         android:layout_gravity="center"
         android:padding="12dp"
         android:text="Sessies Vandaag"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
     <ListView
         android:id="@+id/kitersList"
