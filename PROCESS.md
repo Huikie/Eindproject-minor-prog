@@ -15,3 +15,10 @@
 - In overleg met assistent (Marijn) besloten om de spots die vanaf het begin in de applicatie te zien zijn handmatig toe te voegen aan de online spotinformatie database door een curl POST operatie in de CS50 terminal. Had de spots ook kunnen hardcoden in de app en dan kunnen posten, maar dit is me afgeraden.
 - Besloten om voorlopig af te wachten hoe om te gaan met afbeeldingen voor spots, omdat volgens assistent (Marijn) er mogelijk nog extra functionaliteit in de Rester API geimplementeerd gaat worden die de omgang hier mee makkelijker zou kunnen maken.
 # dag 6 - 15-jan
+- Besloten om gebruikers bij lang klikken op de map door te verwijzen naar de pagina waar ze een spotaanvraag kunnen doen. Zo kunnen de gebruikers heel precies aangeven waar ze graag een spot willen en ontvang ik de precieze latitude en longitude van de aangevraagde spot. Door een medestudent is mij echter wel aangeraden om gebruikers te informeren over deze lang klik mogelijkheid, omdat het niet voor zich spreekt.
+- Besloten om de spotinformatie rechts in de SpotDetailsActivity te weergeven en de afbeelding links. Daarnaast heb ik weerinformatie en andere spotinformatie in twee blokken van elkaar gescheiden en de soort spotinformatie dikgedrukt weergeven.
+# dag 7 - 16-jan
+- Besloten om gebruikers de mogelijkheid te geven om het kaarttype van de Googlemap te veranderen, omdat ik uit ervaring weet dat de verschillende kaarttypes handig kunnen zijn bij het opzoek gaan naar kitespots.
+- De manier van gebruikers informeren over de lang klik mogelijkheid heb ik bepaald en geimplementeerd. Dit heb ik gedaan door rechtsboven in het scherm een ImageButton toe te voegen met een 'addmarkericon'. Als gebruikers daar op klikken krijgen ze informatie hoe ze een spotaanvraag kunnen doen (door lang te klikken op de plek waar je, jouw spot wilt).
+# dag 8 - 17-jan
+
