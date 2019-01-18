@@ -197,4 +197,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(MapsActivity.this, CurrentSessionsActivity.class);
         startActivity(intent);
     }
+
+    /**Method that directs the users to an activity where they can see all the spots with information and status.*/
+    public void getAllSpots(View view){
+        Intent intent = new Intent(MapsActivity.this, SpotStatusActivity.class);
+        startActivity(intent);
+    }
 }

@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="getAllSpots"
             android:padding="6dp"
             android:text="Spots"
             android:textSize="12sp" />

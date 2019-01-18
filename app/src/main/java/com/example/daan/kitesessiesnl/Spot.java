@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Module class for a spot.
-public class Spot {
+public class Spot implements Comparable<Spot> {
 
     String name, type, surface;
     Integer distance, imageId, directionId, status;
@@ -22,6 +22,13 @@ public class Spot {
         this.lon = lon;
         this.status = status;
     }
+
+        /** This method defines a way to sort the list of spots alphabetically based on the spot name.
+        * I found this way of sorting a list in the following video: https://www.youtube.com/watch?v=hncd_WgF83c.*/
+        @Override
+        public int compareTo(Spot other) {
+            return this.name.compareToIgnoreCase(other.name);
+        }
 
     // Getters & Setters
     public Integer getStatus() {

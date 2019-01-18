@@ -17,30 +17,105 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="239dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
         android:ems="10"
         android:hint="Naam (Kitepro1)"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/kitesize"
-        android:layout_width="239dp"
+    <TextView
+        android:id="@+id/spinnerTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ems="10"
-        android:hint="Kitematen (8m en 10m)"
-        android:inputType="textPersonName" />
+        android:layout_gravity="start"
+        android:layout_marginLeft="25dp"
+        android:labelFor="@+id/numbKiteSizes"
+        android:text="Hoeveel kites?"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/numbKiteSizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="12dp" />
 
     <EditText
-        android:id="@+id/timespan"
-        android:layout_width="239dp"
+        android:id="@+id/firstSize"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
         android:ems="10"
-        android:hint="Tijd (11:13)"
-        android:inputType="time" />
+        android:hint="maat"
+        android:inputType="number"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/secondSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:hint="maat 2"
+        android:inputType="number"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/thirdSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:hint="maat 3"
+        android:inputType="number"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/fourthSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:hint="maat 4"
+        android:inputType="number"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/fifthSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:ems="10"
+        android:hint="maat 5"
+        android:inputType="number"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:hint="Start Tijd" />
+
+    <EditText
+        android:id="@+id/stopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:hint="Stop Tijd" />
 
     <Button
         android:id="@+id/startSession"

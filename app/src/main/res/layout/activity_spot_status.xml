@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".SpotStatusActivity">
 
+    <TextView
+        android:id="@+id/spotStatusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:text="Alle Spots"
+        android:textSize="30sp" />
+
     <ListView
         android:id="@+id/spotstatusList"
         android:layout_width="match_parent"

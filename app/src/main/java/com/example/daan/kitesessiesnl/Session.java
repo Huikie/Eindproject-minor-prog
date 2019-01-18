@@ -14,14 +14,11 @@ public class Session implements Comparable<Session> {
         this.date = date;
     }
 
-    /** This method defines a way to sort a list of sessions alphabetically based on the spot name.
-     * I found this way of sorting a list in the following video: https://www.youtube.com/watch?v=hncd_WgF83c.*/
+    /** This method defines a way to sort the list of sessions alphabetically based on the spot name.
+     * Source: https://stackoverflow.com/questions/22871583/implements-comparable-to-get-alphabetical-sort-with-strings.*/
     @Override
     public int compareTo(Session other) {
-        int compareInt = this.spot.compareTo(other.spot);
-        if (compareInt < 0) return -1;
-        if (compareInt > 0) return 1;
-        return 0;
+        return this.spot.compareToIgnoreCase(other.spot);
     }
 
     // Getters & setters.

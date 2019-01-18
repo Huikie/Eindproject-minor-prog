@@ -87,7 +87,7 @@
     <ListView
         android:id="@+id/kitersList"
         android:layout_width="wrap_content"
-        android:layout_height="216dp" />
+        android:layout_height="220dp" />
 
     <Button
         android:id="@+id/createSession"
