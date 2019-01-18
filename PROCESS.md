@@ -21,4 +21,8 @@
 - Besloten om gebruikers de mogelijkheid te geven om het kaarttype van de Googlemap te veranderen, omdat ik uit ervaring weet dat de verschillende kaarttypes handig kunnen zijn bij het opzoek gaan naar kitespots.
 - De manier van gebruikers informeren over de lang klik mogelijkheid heb ik bepaald en geimplementeerd. Dit heb ik gedaan door rechtsboven in het scherm een ImageButton toe te voegen met een 'addmarkericon'. Als gebruikers daar op klikken krijgen ze informatie hoe ze een spotaanvraag kunnen doen (door lang te klikken op de plek waar je, jouw spot wilt).
 # dag 8 - 17-jan
+- Op advies van assistent (Renske) besloten om twee extra activiteiten te maken. Éen waarin gebruikers alle sessies kunnen zien die momenteel bezig zijn met de sessieinformatie erbij, alfabetisch gesorteerd op spotnaam en één waarin gebruikers alle spots (spots die op de map staan (status = zichtbaar) en spotaanvragen die gedaan zijn (status = in behandeling)) kunnen zien, aflatbetisch gesorteerd op spotnaam.
+- Besloten om zoom in en zoom out Buttons uit de MapsActivity te verwijderen, omdat in een app mensen hoogstwaarschijnlijk zullen zoomen door met twee vingers te slepen.
+# dag 9 - 18-jan
+- Besloten dat het nodig is om userinput op een goede manier te limiteren, zodat de inhoud van de app netjes blijft. Idee is: bij kitemaat bijvoorbeeld de user aan laten geven hoeveel kites hij/zij meeneemt (stel: 2) en op basis daarvan zoveel inputfields geven aan de user (2 inputfields).
 
