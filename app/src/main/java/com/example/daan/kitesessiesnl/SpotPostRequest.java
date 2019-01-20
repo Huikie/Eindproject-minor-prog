@@ -17,11 +17,9 @@ import java.util.Map;
 public class SpotPostRequest implements Response.Listener<String>, Response.ErrorListener {
 
     Context context;
-    String name, type, surface;
-    Integer distance, imageId, directionId, status;
+    String name, type, surface, imageId;
+    Integer distance, directionId, status;
     Double lat,lon;
-
-//    Callback callback_activity;
 
     /**Method that makes a callback possible.*/
 //    public interface Callback {
@@ -46,7 +44,7 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
             params.put("type", type);
             params.put("surface", surface);
             params.put("distance", distance.toString());
-            params.put("imageId", imageId.toString());
+            params.put("imageId", imageId);
             params.put("directionId", directionId.toString());
             params.put("status", status.toString());
             params.put("lat", lat.toString());
@@ -60,20 +58,19 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
     }
 
     /**Method that posts the received name, kitesize, timespan & spot.*/
-    public void postSpot(String spot_name, String spot_type, String spot_surface, Integer spot_distance, Integer spot_imageId, Integer spot_directionId, Integer spot_status, Double spot_lat, Double spot_long){
-//        callback_activity = activity;
-        name = spot_name;
-        type = spot_type;
-        surface = spot_surface;
-        distance = spot_distance;
-        imageId = spot_imageId;
-        directionId = spot_directionId;
-        status = spot_status;
-        lat = spot_lat;
-        lon = spot_long;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
+    public void postSpot(String spotName, String spotType, String spotSurface, Integer spotDistance, String spotImageId, Integer spotDirectionId, Integer spotStatus, Double spotLat, Double spotLong){
+        name = spotName;
+        type = spotType;
+        surface = spotSurface;
+        distance = spotDistance;
+        imageId = spotImageId;
+        directionId = spotDirectionId;
+        status = spotStatus;
+        lat = spotLat;
+        lon = spotLong;
+        String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
         RequestQueue queue = Volley.newRequestQueue(context);
-        SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST, json_url,this,this);
+        SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST, jsonUrl,this,this);
         queue.add(postRequest);
     }
 

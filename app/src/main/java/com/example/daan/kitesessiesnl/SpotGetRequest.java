@@ -20,7 +20,7 @@ import static java.lang.Integer.parseInt;
 public class SpotGetRequest implements Response.Listener<JSONArray>, Response.ErrorListener{
 
     Context context;
-    Callback callback_activity;
+    Callback callbackActivity;
     ArrayList<Spot> spots = new ArrayList<>();
 
     /**Method that makes a callback possible.*/
@@ -35,17 +35,17 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
 
     /**Method that gets the spots from the API.*/
     public void getSpots(Callback activity){
-        callback_activity = activity;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
+        callbackActivity = activity;
+        String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
         RequestQueue queue = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(json_url,this,this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(jsonUrl,this,this);
         queue.add(jsonArrayRequest);
     }
 
     @Override
     /**The spots aren't received successfully, an error message will be displayed.*/
     public void onErrorResponse(VolleyError error) {
-        callback_activity.gotSpotsError(error.getMessage());
+        callbackActivity.gotSpotsError(error.getMessage());
     }
 
     @Override
@@ -53,22 +53,22 @@ public class SpotGetRequest implements Response.Listener<JSONArray>, Response.Er
     public void onResponse(JSONArray response) {
         try{
             for (int i = 0; i < response.length(); i++){
-                JSONObject session_info = response.getJSONObject(i);
-                String name = session_info.getString("name");
-                String type = session_info.getString("type");
-                String surface = session_info.getString("surface");
-                Integer distance = parseInt(session_info.getString("distance"));
-                Integer imageId = parseInt(session_info.getString("imageId"));
-                Integer directionId = parseInt(session_info.getString("directionId"));
-                Integer status = parseInt(session_info.getString("status"));
-                Double lat = parseDouble(session_info.getString("lat"));
-                Double lon = parseDouble(session_info.getString("lon"));
+                JSONObject sessionInfo = response.getJSONObject(i);
+                String name = sessionInfo.getString("name");
+                String type = sessionInfo.getString("type");
+                String surface = sessionInfo.getString("surface");
+                Integer distance = parseInt(sessionInfo.getString("distance"));
+                String imageId = sessionInfo.getString("imageId");
+                Integer directionId = parseInt(sessionInfo.getString("directionId"));
+                Integer status = parseInt(sessionInfo.getString("status"));
+                Double lat = parseDouble(sessionInfo.getString("lat"));
+                Double lon = parseDouble(sessionInfo.getString("lon"));
                 spots.add(new Spot(name,type,surface,distance,imageId,directionId,status,lat,lon));
 
             }
 
             // The spots ArrayList is send to the activity that wanted it.
-            callback_activity.gotSpots(spots);
+            callbackActivity.gotSpots(spots);
         }
         catch(JSONException e){
             System.out.println(e.toString());

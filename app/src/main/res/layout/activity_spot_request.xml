@@ -21,36 +21,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Spot Naam"
+        android:hint="Spot naam"
         android:inputType="textPersonName"
+        android:maxLength="20"
         android:padding="12dp" />
 
-    <EditText
-        android:id="@+id/spotType"
+    <Spinner
+        android:id="@+id/spotTypes"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Type Spot (Meer)"
-        android:inputType="textPersonName"
-        android:padding="12dp" />
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/spotSurface"
+    <Spinner
+        android:id="@+id/spotSurfaces"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Ondergrond Spot"
-        android:inputType="textPersonName"
-        android:padding="12dp" />
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/spotDistance"
-        android:layout_width="wrap_content"
+        android:layout_width="263dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Afstand Spot"
-        android:inputType="textPersonName"
+        android:hint="Afstand tot parkeerplaats (M)"
+        android:inputType="number"
         android:padding="12dp" />
+
+    <ImageView
+        android:id="@+id/spotImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></ImageView>
+
+    <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:onClick="loadImage"
+        android:text="Laad afbeelding"></Button>
+
 
     <Button
         android:id="@+id/doRequest"

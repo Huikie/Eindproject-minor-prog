@@ -69,21 +69,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         coordinates.putParcelable("LatLng", marker.getPosition());
 
 
-                        String spot_type = spot.getType();
-                        String spot_surface = spot.getSurface();
-                        Integer spot_distance = spot.getDistance();
-                        Integer spot_image = spot.getImageId();
-                        Integer spot_wind_directions = spot.getDirectionId();
+                        String spotType = spot.getType();
+                        String spotSurface = spot.getSurface();
+                        Integer spotDistance = spot.getDistance();
+                        String spotImage = spot.getImageId();
+                        Integer spotWindDirections = spot.getDirectionId();
 
                         Intent intent = new Intent(MapsActivity.this, SpotDetailsActivity.class);
 
                         intent.putExtras(coordinates);
                         intent.putExtra("Title", title);
-                        intent.putExtra("Type", spot_type);
-                        intent.putExtra("Surface", spot_surface);
-                        intent.putExtra("Distance", spot_distance.toString());
-                        intent.putExtra("Image", spot_image);
-                        intent.putExtra("Directions", spot_wind_directions);
+                        intent.putExtra("Type", spotType);
+                        intent.putExtra("Surface", spotSurface);
+                        intent.putExtra("Distance", spotDistance.toString());
+                        intent.putExtra("Image", spotImage);
+                        intent.putExtra("Directions", spotWindDirections);
 
                         startActivity(intent);
                     }
@@ -103,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#99daf2"));
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

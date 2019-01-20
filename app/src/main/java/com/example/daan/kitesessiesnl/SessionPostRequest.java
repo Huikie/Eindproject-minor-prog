@@ -47,15 +47,15 @@ public class SessionPostRequest implements Response.Listener<String>, Response.E
     }
 
     /**Method that posts the received name, kitesize, timespan, spot, timespan and date.*/
-    public void postSession(String kiter_name, String kiter_kite, String session_time, String session_spot, String session_date){
-        spot = session_spot;
-        name = kiter_name;
-        kite = kiter_kite;
-        time = session_time;
-        date = session_date;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
+    public void postSession(String kiterName, String kiterKite, String sessionTime, String sessionSpot, String sessionDate){
+        spot = sessionSpot;
+        name = kiterName;
+        kite = kiterKite;
+        time = sessionTime;
+        date = sessionDate;
+        String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
         RequestQueue queue = Volley.newRequestQueue(context);
-        PostRequest postRequest = new PostRequest(Request.Method.POST, json_url,this,this);
+        PostRequest postRequest = new PostRequest(Request.Method.POST, jsonUrl,this,this);
         queue.add(postRequest);
     }
 

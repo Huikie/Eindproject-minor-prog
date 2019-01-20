@@ -1,12 +1,16 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +20,9 @@ import com.google.android.gms.maps.model.LatLng;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
 
 public class SpotDetailsActivity extends AppCompatActivity implements WeatherRequest.Callback, SessionRequest.Callback {
@@ -24,17 +30,25 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
     /**Method that makes sure that only the sessions are displayed from the spot that is clicked on by the user.*/
     @Override
     public void gotSessions(ArrayList<Session> sessions) {
+
         Intent intent = getIntent();
         String title = intent.getStringExtra("Title");
+
         ArrayList<Session> s2 = new ArrayList<>();
+
+        // Create a timestamp of today's date to determine which sessions to show.
+        String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
         for (Session session: sessions) {
-            if(session.getSpot().equals(title)){
-                s2.add(new Session(session.getName(),session.getKite(),session.getTime(),session.getSpot(),session.getDate()));
+            if(session.getSpot().equals(title) && session.getDate().equals(timeStamp)){
+
+                s2.add(session);
+                //new Session(session.getName(),session.getKite(),session.getTime(),session.getSpot(),session.getDate())
 
                 // Using the created SessionAdapter to put the spot's sessions nicely in a ListView.
                 SessionAdapter itemsAdapter = new SessionAdapter(this, R.layout.session, s2);
-                ListView session_list = findViewById(R.id.kitersList);
-                session_list.setAdapter(itemsAdapter);
+                ListView sessionList = findViewById(R.id.kitersList);
+                sessionList.setAdapter(itemsAdapter);
             }
         }
     }
@@ -116,7 +130,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot_details);
 
-        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
 
         // Get information received from the marker that is clicked on.
         Intent intent = getIntent();
@@ -125,8 +139,24 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         String type = intent.getStringExtra("Type");
         String surface = intent.getStringExtra("Surface");
         String distance = intent.getStringExtra("Distance");
+        String imageId = intent.getStringExtra("Image");
 
-        TextView spotdetailsTitle = findViewById(R.id.spotdetails_Title);
+        // Decode the Base64 String and create the image in the spotdetailsactivity ImageView.
+        try{
+            int flags = Base64.NO_WRAP | Base64.URL_SAFE;
+            byte[] imageIdDecoded = Base64.decode(imageId,flags);
+
+            Bitmap bmp = BitmapFactory.decodeByteArray(imageIdDecoded, 0, imageIdDecoded.length);
+
+            ImageView spotImage = findViewById(R.id.spotDImage);
+            spotImage.setImageBitmap(Bitmap.createScaledBitmap(bmp, bmp.getWidth(),
+                bmp.getHeight(), false));}
+
+                catch(Exception e){
+            Log.d("bug", e.toString());
+        }
+
+        TextView spotdetailsTitle = findViewById(R.id.spotDetailsTitle);
         spotdetailsTitle.setText(title);
 
         TextView spotdetailsType = findViewById(R.id.type);

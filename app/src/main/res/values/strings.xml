@@ -16,4 +16,18 @@
         <item>Vier</item>
         <item>Vijf</item>
     </string-array>
+
+    <string-array name="spotTypes">
+        <item>Zee</item>
+        <item>Meer</item>
+        <item>Lagune</item>
+        <item>Zee en Lagune</item>
+        <item>Zee en Meer</item>
+    </string-array>
+
+    <string-array name="spotSurfaces">
+        <item>Zand</item>
+        <item>Gras</item>
+        <item>Zand en Gras</item>
+    </string-array>
 </resources>

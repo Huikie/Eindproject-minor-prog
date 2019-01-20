@@ -6,12 +6,12 @@ import java.util.List;
 // Module class for a spot.
 public class Spot implements Comparable<Spot> {
 
-    String name, type, surface;
-    Integer distance, imageId, directionId, status;
+    String name, type, surface, imageId;
+    Integer distance, directionId, status;
     Double lat, lon;
 
     // Constructor.
-    public Spot(String name, String type, String surface, Integer distance, Integer imageId, Integer directionId, Integer status, Double lat, Double lon) {
+    public Spot(String name, String type, String surface, Integer distance, String imageId, Integer directionId, Integer status, Double lat, Double lon) {
         this.name = name;
         this.type = type;
         this.surface = surface;
@@ -71,11 +71,11 @@ public class Spot implements Comparable<Spot> {
         this.distance = distance;
     }
 
-    public Integer getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(Integer imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 

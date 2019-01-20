@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class SessionRequest implements Response.Listener<JSONArray>, Response.ErrorListener{
 
     Context context;
-    Callback callback_activity;
+    Callback callbackActivity;
     ArrayList<Session> sessions = new ArrayList<>();
 
     /**Method that makes a callback possible.*/
@@ -34,17 +34,17 @@ public class SessionRequest implements Response.Listener<JSONArray>, Response.Er
 
     /**Method that gets the sessions from the API.*/
     public void getSessions(Callback activity){
-        callback_activity = activity;
-        String json_url = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
+        callbackActivity = activity;
+        String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
         RequestQueue queue = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(json_url,this,this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(jsonUrl,this,this);
         queue.add(jsonArrayRequest);
     }
 
     @Override
     /**The sessions aren't received successfully, an error message will be displayed.*/
     public void onErrorResponse(VolleyError error) {
-        callback_activity.gotSessionsError(error.getMessage());
+        callbackActivity.gotSessionsError(error.getMessage());
     }
 
     @Override
@@ -52,18 +52,18 @@ public class SessionRequest implements Response.Listener<JSONArray>, Response.Er
     public void onResponse(JSONArray response) {
         try{
             for (int i = 0; i < response.length(); i++){
-                JSONObject session_info = response.getJSONObject(i);
-                String spot = session_info.getString("spot");
-                String name = session_info.getString("name");
-                String kite = session_info.getString("kite");
-                String time = session_info.getString("time");
-                String date = session_info.getString("date");
+                JSONObject sessionInfo = response.getJSONObject(i);
+                String spot = sessionInfo.getString("spot");
+                String name = sessionInfo.getString("name");
+                String kite = sessionInfo.getString("kite");
+                String time = sessionInfo.getString("time");
+                String date = sessionInfo.getString("date");
                 sessions.add(new Session(name,kite,time,spot,date));
 
             }
 
             // The sessions ArrayList is send to the activity that wanted it.
-            callback_activity.gotSessions(sessions);
+            callbackActivity.gotSessions(sessions);
         }
         catch(JSONException e){
             System.out.println(e.toString());

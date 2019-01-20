@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class WeatherRequest implements com.android.volley.Response.Listener<JSONObject>, com.android.volley.Response.ErrorListener{
     Context context;
-    Callback callback_activity;
+    Callback callbackActivity;
 
     /**Method that makes it possible to do a callback from a different activity.*/
     public interface Callback {
@@ -34,19 +34,19 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
      * where the user did click on, and if successful, will notify the activity that instantiated the request
      *  that it is done through the callback. */
     public void getWeatherInfo(Callback activity, Double lat, Double lon){
-        callback_activity = activity;
+        callbackActivity = activity;
 
         //Do an API request to an url and put the latitude and longitude from the marker that is clicked on the right places in the url.
-        String json_url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=3202ffc700f83be2f43e2114aa41d0a3";
+        String jsonUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=3202ffc700f83be2f43e2114aa41d0a3";
         RequestQueue queue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(json_url, null, this,this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(jsonUrl, null, this,this);
         queue.add(jsonObjectRequest);
     }
 
     @Override
     /**When something goes wrong with getting the weatherInfo this method displays an error message.*/
     public void onErrorResponse(VolleyError error) {
-        callback_activity.gotWeatherInfoError(error.getMessage());
+        callbackActivity.gotWeatherInfoError(error.getMessage());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class WeatherRequest implements com.android.volley.Response.Listener<JSON
             WeatherInfo weatherInfo = new WeatherInfo(windspeed, winddegrees, temperature);
 
             // Pass the ArrayList back to the activity that wanted to have it.
-            callback_activity.gotWeatherInfo(weatherInfo);
+            callbackActivity.gotWeatherInfo(weatherInfo);
 
         }
 

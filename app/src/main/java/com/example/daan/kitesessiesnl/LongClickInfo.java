@@ -11,7 +11,7 @@ public class LongClickInfo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popwindow);
 
-        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
+        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
