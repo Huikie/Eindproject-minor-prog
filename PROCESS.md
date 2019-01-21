@@ -24,5 +24,10 @@
 - Op advies van assistent (Renske) besloten om twee extra activiteiten te maken. Éen waarin gebruikers alle sessies kunnen zien die momenteel bezig zijn met de sessieinformatie erbij, alfabetisch gesorteerd op spotnaam en één waarin gebruikers alle spots (spots die op de map staan (status = zichtbaar) en spotaanvragen die gedaan zijn (status = in behandeling)) kunnen zien, aflatbetisch gesorteerd op spotnaam.
 - Besloten om zoom in en zoom out Buttons uit de MapsActivity te verwijderen, omdat in een app mensen hoogstwaarschijnlijk zullen zoomen door met twee vingers te slepen.
 # dag 9 - 18-jan
-- Besloten dat het nodig is om userinput op een goede manier te limiteren, zodat de inhoud van de app netjes blijft. Idee is: bij kitemaat bijvoorbeeld de user aan laten geven hoeveel kites hij/zij meeneemt (stel: 2) en op basis daarvan zoveel inputfields geven aan de user (2 inputfields).
+- Besloten dat het nodig is om userinput op een goede manier te limiteren, zodat de inhoud van de app netjes blijft. Idee is: bij kitemaat bijvoorbeeld de user aan laten geven hoeveel kites hij/zij meeneemt (stel: 2) en op basis daarvan zoveel inputfields geven aan de user (2 inputfields). Om de tijdspanne in een goed formaat van de user te ontvangen is belsoten om een 'timepicker' te laten zien aan de gebruiker voor zowel de begin als de eindtijd. De tijdspanne wordt dan ontvangen in het volgende formaat: HH-mm - HH-mm. Bij een spotaanvraag wordt de gebruiker ook om input gevraagd, waaronder spottype en spotondergrond. Hiervoor is besloten een lijstje van strings te maken met mogelijke types en ondergronden waaruit de gebruiker de mogelijkheid kiest om één ondergrond en type te selecteren.
+# dag 10 - 21-jan
+- Besloten om Base64 encoding te gebruiken om afbeeldingen up te loaden naar de API en vervolgens te ontcijferen d.m.v. Base64 decoding als de afbeeldingen van de server nodig is. Ook besloten dat wanneer een gebruiker een afbeelding upload het nodig is dat de gebruiker ziet wat hij/zij geupload heeft door het te weergeven op het scherm.
+- Nagedacht over kleurschema's voor de applicatie en bepaald dat #26b1e7 een mooie basiskleur is voor de app.
+- Besloten om een refresh icon te gebruiken in plaats van een button met 'ververs' erin, zodat de app er mooier uit komt te zien.
+# dag 11 - 22-jan
 
