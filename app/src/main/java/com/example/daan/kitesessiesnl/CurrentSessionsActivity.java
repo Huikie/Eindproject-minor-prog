@@ -55,8 +55,6 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_sessions);
 
-        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#99daf2"));
-
         // Do a SessionRequest to get the sessions from the API, to be able to show all sessions from today.
         SessionRequest x = new SessionRequest(this);
         x.getSessions(this);

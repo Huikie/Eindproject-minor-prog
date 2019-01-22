@@ -1,6 +1,7 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,15 @@ public class SessionAdapter extends ArrayAdapter<Session> {
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.session, parent, false);
+        }
+
+        if(position %2 == 1){
+            // Set a background color for ListView regular row/item
+            convertView.setBackgroundColor(Color.parseColor("#FFB6B546"));
+        }
+        else{
+            // Set the background color for alternate row/item
+            convertView.setBackgroundColor(Color.parseColor("#FFCCCB4C"));
         }
 
         int index = position;

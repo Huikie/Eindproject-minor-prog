@@ -3,10 +3,10 @@
     <string name="title_activity_maps">Map</string>
 
     <string-array name="mapsViews">
-        <item>Normaal</item>
-        <item>Sateliet</item>
-        <item>Terrein</item>
         <item>Hybrid</item>
+        <item>Sateliet</item>
+        <item>Normaal</item>
+        <item>Terrein</item>
     </string-array>
 
     <string-array name="numbKiteSizes">

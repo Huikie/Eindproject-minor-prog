@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0080FF"
     android:orientation="vertical"
     tools:context=".SpotStatusActivity">
 
@@ -19,5 +20,7 @@
     <ListView
         android:id="@+id/spotstatusList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@android:color/black"
+        android:dividerHeight="1dp" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -31,6 +32,16 @@ public class SessionAdapter2 extends ArrayAdapter<Session> {
         }
 
         int index = position;
+
+        if(index %2 == 1){
+            // Set a background color for ListView regular row/item
+            convertView.setBackgroundColor(Color.parseColor("#4e525a"));
+        }
+        else{
+            // Set the background color for alternate row/item
+            convertView.setBackgroundColor(Color.parseColor("#383d45"));
+        }
+
         TextView name = convertView.findViewById(R.id.kiterName);
         TextView kitesize = convertView.findViewById(R.id.kiteSize);
         TextView spotName = convertView.findViewById(R.id.spotName);

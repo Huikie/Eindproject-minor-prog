@@ -130,8 +130,6 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot_details);
 
-        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
-
         // Get information received from the marker that is clicked on.
         Intent intent = getIntent();
         LatLng coordinates = intent.getParcelableExtra("LatLng");

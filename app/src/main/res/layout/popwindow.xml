@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222831"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingStart="12dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:text="Jouw Spot op de Kaart!"
+        android:textColor="#eeeeee"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/longclickinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:text="Om jouw spot op de kaart te krijgen moet je lang drukken op de locatie op de map waar je een spot wilt. Hierna krijg je de mogelijkheid om voor deze locatie een spotaanvraag te doen." />
-</RelativeLayout>
+        android:text='Om jouw spot op de kaart te krijgen moet je lang drukken op de locatie op de map waar je een spot wilt. Hierna krijg je de mogelijkheid om voor deze locatie een spotaanvraag te doen. Door op de "SPOTS" button bovenaan te drukken kan je de status van je aanvraag zien.'
+        android:textColor="#eeeeee" />
+</LinearLayout>

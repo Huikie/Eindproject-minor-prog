@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222831"
     android:orientation="vertical"
     tools:context=".CurrentSessionsActivity">
 
@@ -12,13 +13,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:text="Alle Sessies Vandaag"
+        android:padding="24dp"
+        android:text="Alle sessies vandaag"
+        android:textColor="#00adb5"
         android:textSize="30sp" />
 
     <ListView
         android:id="@+id/currentSessionsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#89c4d9" />
+        android:background="#89c4d9"
+        android:divider="@android:color/black"
+        android:dividerHeight="1dp" />
 </LinearLayout>

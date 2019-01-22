@@ -11,8 +11,6 @@ public class LongClickInfo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popwindow);
 
-        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
-
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -20,7 +18,7 @@ public class LongClickInfo extends Activity {
         int height = dm.heightPixels;
 
         // Determine the width and the height of the popwindow that is displayed when the user clicks the "addmarkerbutton".
-        getWindow().setLayout((int)(width*.4),(int)(height*.26));
+        getWindow().setLayout((int)(width*.6),(int)(height*.31));
 
     }
 }

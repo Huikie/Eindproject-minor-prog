@@ -32,8 +32,6 @@ public class SpotStatusActivity extends AppCompatActivity implements SpotGetRequ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot_status);
 
-        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
-
         // Do a SpotGetRequest to be able to show the user all the spots (pending ones and ones that are in the map).
         SpotGetRequest x = new SpotGetRequest(this);
         x.getSpots(this);

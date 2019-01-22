@@ -5,6 +5,7 @@
     android:id="@+id/mapLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#222831"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,54 +17,60 @@
             android:id="@+id/sessies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:layout_weight="1"
-            android:backgroundTint="#cb4f1f"
+            android:backgroundTint="#00adb5"
             android:onClick="getAllSessions"
             android:padding="6dp"
             android:text="Sessies"
-            android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/spotstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
             android:layout_weight="1"
-            android:backgroundTint="#cb4f1f"
+            android:backgroundTint="#00adb5"
             android:onClick="getAllSpots"
             android:padding="6dp"
             android:text="Spots"
-            android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/mapRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#cb4f1f"
+            android:background="#222831"
             android:onClick="onRefresh"
-            android:text="Ververs"
-            android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:padding="6dp"
+            android:src="@drawable/ic_refresh_black_24dp" />
 
         <ImageButton
             android:id="@+id/spotRequest"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#222831"
             android:onClick="doSpotRequest"
             android:padding="6dp"
-            android:src="@drawable/add_marker_icon_red" />
+            android:src="@drawable/ic_add_location_black_24dp" />
 
         <Spinner
             android:id="@+id/mapTypes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:layout_weight="1"
-            android:padding="6dp" />
+            android:padding="6dp"
+            android:popupBackground="#222831" />
 
     </LinearLayout>
 

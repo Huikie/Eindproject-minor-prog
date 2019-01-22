@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -47,8 +51,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(Spot spot:spots){
 
             // If the spot status is equal to 1 (approved) add a marker for the spot on the map.
+            float hue = 15;
             if(spot.getStatus() == 1){
-                mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName()));
+                mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName())); // #0082b5 icon(getMarkerIcon("#000000")) .icon(getMarkerIcon("#000000"))
             }
         }
 
@@ -94,7 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void gotSpotsError(String message) {
-        Toast.makeText(this, message,
+        Toast.makeText(this, "Kitespots kunnen niet geladen worden. U heeft mogelijk geen verbinding tot het internet",
                 Toast.LENGTH_LONG).show();
     }
 
@@ -103,7 +108,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#99daf2"));
+        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#26b1e7"));
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -125,24 +130,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Create a Spinner with the different Googlemap types so that the user can choose which maptype the users wants.
         Spinner mapTypes = findViewById(R.id.mapTypes);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.mapsViews));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,R.layout.map_type_textview,getResources().getStringArray(R.array.mapsViews));
+        myAdapter.setDropDownViewResource(R.layout.map_types_dropdown_item);
         mapTypes.setAdapter(myAdapter);
 
         mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(id == 0){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 }
                 else if(id == 1){
                     mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 }
                 else if(id == 2){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 }
                 else if(id == 3){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                 }
                 }
 
@@ -202,5 +207,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void getAllSpots(View view){
         Intent intent = new Intent(MapsActivity.this, SpotStatusActivity.class);
         startActivity(intent);
+    }
+
+    // Source: https://stackoverflow.com/questions/19076124/android-map-marker-color
+    public BitmapDescriptor getMarkerIcon(String color) {
+        float[] hsv = new float[3];
+        Color.colorToHSV(Color.parseColor(color), hsv);
+        return BitmapDescriptorFactory.defaultMarker(hsv[0]);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -32,6 +33,16 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
         }
 
         int index = position;
+
+        if(index %2 == 1){
+            // Set a background color for ListView regular row/item
+            convertView.setBackgroundColor(Color.parseColor("#3DB9EA"));
+        }
+        else{
+            // Set the background color for alternate row/item
+            convertView.setBackgroundColor(Color.parseColor("#54C2EC"));
+        }
+
         TextView spotName = convertView.findViewById(R.id.spotName);
         TextView spotType = convertView.findViewById(R.id.spotType);
         TextView spotSurface = convertView.findViewById(R.id.spotSurface);

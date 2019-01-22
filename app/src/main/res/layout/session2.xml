@@ -9,8 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="6dp"
-        android:textStyle="bold" />
+        android:paddingLeft="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:textColor="#7fd6da"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
-            android:padding="6dp" />
+            android:paddingLeft="12dp"
+            android:paddingBottom="6dp"
+            android:textColor="#eeeeee"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/kiteSize"
@@ -32,7 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="6dp" />
+            android:paddingBottom="6dp"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/timeSpan"
@@ -40,7 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:padding="6dp" />
+            android:paddingRight="12dp"
+            android:paddingBottom="6dp"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>
