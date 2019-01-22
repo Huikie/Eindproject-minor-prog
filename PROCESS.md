@@ -30,4 +30,6 @@
 - Nagedacht over kleurschema's voor de applicatie en bepaald dat #26b1e7 een mooie basiskleur is voor de app.
 - Besloten om een refresh icon te gebruiken in plaats van een button met 'ververs' erin, zodat de app er mooier uit komt te zien.
 # dag 11 - 22-jan
+- Kleurenpatroon gevonden dat mij mooi lijkt voor de applicatie: https://colorhunt.co/palette/2763. Voor 2 activiteiten geimplementeerd en nu nog voorleggen aan verschillende mensen voordat ik het definitief implementeer in alle activiteiten.
+
 
