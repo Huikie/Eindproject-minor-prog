@@ -11,7 +11,7 @@
 Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over een spot waar zij gaan kiten. De app zal voorlopig beperkt worden tot spots in Nederland. In de app zullen een aantal veel bezochte kitespots aanwezig zijn onder andere Scheveningen, Wijk aan Zee en Noordwijk. Daarnaast kan een kiter een aanvraag doen om een bepaalde spot (met informatie over de spot) toe te voegen aan de app. Als deze aanvraag geaccepteerd wordt, kunnen alle gebruikers van de app als ze bij deze spot gaan kiten aangeven dat ze daar gaan kiten en eventueel aangeven met welke maat kite ze gaan, hoe laat ze gaan etc. Op deze manier kunnen kiters elkaar informeren om zo een fijnere kitesessie te hebben. Bijvoorbeeld, doordat men aangeeft met welke maat kite hij/zij van plan is te gaan kiten, kan dit twijfel bij mensen (beginners) wegnemen omtrent welke maat kite ze mee moeten nemen en doordat zichtbaar is hoeveel mensen er gaan kiten op welke tijden zou je als beginner de drukte kunnen vermijden of kunnen constateren dat er teveel kiters zijn, zodat je kan beslissen om naar een andere spot te gaan.
 
 ### Schets
-https://share.proto.io/DXBMU8/
+- Staat in DESIGN.md.
 
 ## Prerequisites
 
