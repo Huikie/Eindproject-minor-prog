@@ -31,5 +31,9 @@
 - Besloten om een refresh icon te gebruiken in plaats van een button met 'ververs' erin, zodat de app er mooier uit komt te zien.
 # dag 11 - 22-jan
 - Kleurenpatroon gevonden dat mij mooi lijkt voor de applicatie: https://colorhunt.co/palette/2763. Voor 2 activiteiten geimplementeerd en nu nog voorleggen aan verschillende mensen voordat ik het definitief implementeer in alle activiteiten.
-
+- Besloten om 'items' in 'ListViews' om de beurt een andere kleur te geven, zodat de lijst niet één groot blok wordt.
+# dag 12 - 23-jan
+- - Besloten om titels in #00adb5 dikgedrukt te doen met een lettertype van 30dp. De achtergrond #222831 gemaakt en de statusbar #393e46 gemaakt. Voor normale tekst heb ik #eeeeee als kleur gekozen en een lettertype van 18dp, waarbij sommige teksten die er meer uit moeten springen 20dp zijn of dikgedrukt of schuingedrukt. Daarnaast besloten om de titelbar weg te laten, omdat de titelbar geen toegevoegde waarde heeft voor de gebruiker.
+# Hackathon - 24-jan
+# dag 13 - 25-jan
 
