@@ -1,5 +1,5 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mapTypeDd"
+    android:id="@+id/dropdownText"
     style="?android:attr/spinnerDropDownItemStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

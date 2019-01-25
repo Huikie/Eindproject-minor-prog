@@ -1,10 +1,14 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,25 +16,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
+/**Activity in which the user can start a session on a certain spot.*/
 public class CreateSessionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_session);
-
-        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#ff33b5e5"));
 
         // Get the name from the spot where the user wants to start a session.
         Intent intent = getIntent();
@@ -42,14 +39,14 @@ public class CreateSessionActivity extends AppCompatActivity {
         EditText startTime = findViewById(R.id.startTime);
         EditText stopTime = findViewById(R.id.stopTime);
 
-        // Make the two EditTexts clickable and show timepicker if clicked by the user.
+        // Use the chooseTime method defined below to let users be able to pick a start and stop time with a nice time picker.
         chooseTime(startTime);
         chooseTime(stopTime);
 
         // Create a Spinner with the number of kites someone can take, so that the user can choose how many kites he/she wants to take and can put in the size(s).
         Spinner numberKites = findViewById(R.id.numbKiteSizes);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.numbKiteSizes));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this,R.layout.spinner_textview,getResources().getStringArray(R.array.numbKiteSizes));
+        myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
         numberKites.setAdapter(myAdapter);
 
         // Create an OnItemSelectedListener for the created Spinnner.
@@ -117,7 +114,25 @@ public class CreateSessionActivity extends AppCompatActivity {
         });
     }
 
-    /**Method that lets users start a session with their information.*/
+    /**Method that takes an EditText and when click on the EditText the method shows a TimePickerDialog
+     * and if the user chooses a time the time will be displayed in the EditText.
+     * Source: https://www.codingdemos.com/android-timepicker-edittext/*/
+    public void chooseTime(final EditText editText){
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateSessionActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        editText.setText(String.format("%02d:%02d", hourOfDay, minutes));
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
+            }
+        });
+    }
+
+    /**Method that allows users start a session with their information.*/
     public void startSession(View view){
 
         EditText sizeOne = findViewById(R.id.firstSize);
@@ -154,34 +169,19 @@ public class CreateSessionActivity extends AppCompatActivity {
         String startTimeTxt = startTime.getText().toString();
         String stopTimeTxt = stopTime.getText().toString();
 
-        // Create a timestamp to keep track when the user started his session.
+        // Create a timestamp to keep track on what day the user started his session.
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
 
-        // Post session information of a user to an online database.
+        // Create a timestamp to keep track exactly when the user started his session.
+        String timeStampExact = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss").format(Calendar.getInstance().getTime());
+
+        // Post session information of a user to my online database.
         SessionPostRequest x = new SessionPostRequest(this);
-        x.postSession(nameTxt, sb.toString(), startTimeTxt + " - " + stopTimeTxt, spotTitleTxt, timeStamp);
+        x.postSession(nameTxt, sb.toString(), startTimeTxt + " - " + stopTimeTxt, spotTitleTxt, timeStamp, timeStampExact);
 
         // Heads the user back to the map activity after he/she started a session.
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+        try{Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);}catch(Exception e){Log.d("bug", "bugg");};
 
-    }
-
-    /**Method that takes an EditText and when click on the EditText the method shows a TimePickerDialog
-     * and if the user chooses a time the time will be displayed in the EditText.
-     * Source: https://www.codingdemos.com/android-timepicker-edittext/*/
-    public void chooseTime(final EditText editText){
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateSessionActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        editText.setText(String.format("%02d:%02d", hourOfDay, minutes));
-                    }
-                }, 0, 0, false);
-                timePickerDialog.show();
-            }
-        });
     }
 }

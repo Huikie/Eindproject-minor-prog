@@ -16,7 +16,7 @@
         android:paddingEnd="12dp"
         android:paddingRight="12dp"
         android:paddingBottom="6dp"
-        android:text="Jouw Spot op de Kaart!"
+        android:text="Jouw spot op de kaart!"
         android:textColor="#eeeeee"
         android:textSize="18sp"
         android:textStyle="bold" />

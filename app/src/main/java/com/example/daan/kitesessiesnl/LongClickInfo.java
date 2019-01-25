@@ -1,7 +1,10 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 

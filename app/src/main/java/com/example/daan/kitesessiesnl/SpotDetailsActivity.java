@@ -1,5 +1,10 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +28,8 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 public class SpotDetailsActivity extends AppCompatActivity implements WeatherRequest.Callback, SessionRequest.Callback {
@@ -43,13 +50,35 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
             if(session.getSpot().equals(title) && session.getDate().equals(timeStamp)){
 
                 s2.add(session);
-                //new Session(session.getName(),session.getKite(),session.getTime(),session.getSpot(),session.getDate())
+
+                /** This method defines a way to sort the list of sessions alphabetically based on the date.
+                 * Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class.*/
+                Comparator<Session> lastOnesFirst = new Comparator<Session>() {
+                    @Override
+                    public int compare(Session session, Session otherSession) {
+                        return otherSession.getExactDate().compareToIgnoreCase(session.getExactDate());
+                    }
+                };
+
+                // Sort the sessions in alphabetic order based on the spot name.
+                Collections.sort(s2, lastOnesFirst);
 
                 // Using the created SessionAdapter to put the spot's sessions nicely in a ListView.
                 SessionAdapter itemsAdapter = new SessionAdapter(this, R.layout.session, s2);
                 ListView sessionList = findViewById(R.id.kitersList);
                 sessionList.setAdapter(itemsAdapter);
             }
+        }
+
+        // If there are no sessions yet today.
+        if(s2.size() == 0){
+
+            // Then create a dialog that tells the user that there aren't any sessions yet today.
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.popup_no_session);
+            TextView message = dialog.findViewById(R.id.noSessionsMessage);
+            message.setText(getString(R.string.messageOnNoSessionSpot));
+            dialog.show();
         }
     }
 
@@ -130,6 +159,11 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot_details);
 
+//            Intent intent = getIntent();
+//            finish();
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//            startActivity(intent);
+
         // Get information received from the marker that is clicked on.
         Intent intent = getIntent();
         LatLng coordinates = intent.getParcelableExtra("LatLng");
@@ -164,7 +198,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         spotdetailsSurface.setText(Html.fromHtml("<b>Spot ondergrond:</b> "+surface));
 
         TextView spotdetailsDistance = findViewById(R.id.distance);
-        spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "<br>"));
+        spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "m"+"<br>"));
 
         // Do a WeatherRequest to get the current weatherinfo for the location of the marker that the user clicked on.
         WeatherRequest x = new WeatherRequest(this);

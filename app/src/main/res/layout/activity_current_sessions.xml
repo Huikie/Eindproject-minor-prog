@@ -16,13 +16,13 @@
         android:padding="24dp"
         android:text="Alle sessies vandaag"
         android:textColor="#00adb5"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/currentSessionsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#89c4d9"
-        android:divider="@android:color/black"
-        android:dividerHeight="1dp" />
+        android:divider="#222831"
+        android:dividerHeight="4dp" />
 </LinearLayout>

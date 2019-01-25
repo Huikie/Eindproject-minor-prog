@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222831"
     android:orientation="vertical"
     tools:context=".CreateSessionActivity">
 
@@ -12,8 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:textSize="30sp" />
+        android:padding="24dp"
+        android:textColor="#00adb5"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/name"
@@ -21,9 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="Naam (Kitepro1)"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/spinnerTitle"
@@ -33,6 +41,7 @@
         android:layout_marginLeft="25dp"
         android:labelFor="@+id/numbKiteSizes"
         android:text="Hoeveel kites?"
+        android:textColor="#eeeeee"
         android:textSize="18sp" />
 
     <Spinner
@@ -40,7 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="12dp" />
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
+        android:popupBackground="#222831" />
 
     <EditText
         android:id="@+id/firstSize"
@@ -48,9 +59,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat"
         android:inputType="number"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <EditText
@@ -59,9 +75,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 2"
         android:inputType="number"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <EditText
@@ -70,9 +91,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 3"
         android:inputType="number"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <EditText
@@ -81,9 +107,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 4"
         android:inputType="number"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <EditText
@@ -92,9 +123,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 5"
         android:inputType="number"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
         android:visibility="gone" />
 
     <EditText
@@ -105,7 +141,12 @@
         android:layout_centerVertical="false"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
-        android:hint="Start Tijd" />
+        android:backgroundTint="#00adb5"
+        android:hint="Start Tijd"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/stopTime"
@@ -115,13 +156,22 @@
         android:layout_centerVertical="false"
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
-        android:hint="Stop Tijd" />
+        android:backgroundTint="#00adb5"
+        android:hint="Stop Tijd"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/startSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|center"
+        android:background="#00adb5"
         android:onClick="startSession"
-        android:text="Start Sessie" />
+        android:padding="12dp"
+        android:text="Start Sessie"
+        android:textColor="#eeeeee"
+        android:textSize="18sp" />
 </LinearLayout>

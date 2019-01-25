@@ -30,4 +30,7 @@
         <item>Gras</item>
         <item>Zand en Gras</item>
     </string-array>
+
+    <string name="messageOnNoSession">Momenteel zijn er geen sessies gaande. Ben de eerste die vandaag een sessie start!</string>
+    <string name="messageOnNoSessionSpot">Momenteel zijn er geen sessies gaande op deze spot. Ben de eerste die vandaag een sessie start!</string>
 </resources>

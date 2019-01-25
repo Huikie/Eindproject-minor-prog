@@ -5,11 +5,15 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="start"
-        android:padding="6dp" />
+        android:padding="12dp"
+        android:paddingLeft="12dp"
+        android:textColor="#eeeeee"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/kitesize"
@@ -17,7 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:padding="6dp" />
+        android:padding="12dp"
+        android:textColor="#eeeeee"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/timespan"
@@ -25,5 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="end"
-        android:padding="6dp" />
+        android:padding="12dp"
+        android:paddingRight="12dp"
+        android:textColor="#eeeeee"
+        android:textSize="18sp" />
 </LinearLayout>

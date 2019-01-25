@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 // Module class for weatherinfo.

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0080FF"
+    android:background="#222831"
     android:orientation="vertical"
     tools:context=".SpotStatusActivity">
 
@@ -13,14 +13,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:text="Alle Spots"
-        android:textSize="30sp" />
+        android:padding="24dp"
+        android:text="Alle spots"
+        android:textColor="#00adb5"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/spotstatusList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/black"
-        android:dividerHeight="1dp" />
+        android:divider="#222831"
+        android:dividerHeight="4dp" />
 </LinearLayout>

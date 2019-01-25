@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.app.Activity;
@@ -44,14 +48,14 @@ public class SpotRequestActivity extends AppCompatActivity {
 
         // Create a Spinner with the spotTypes so that someone can choose the type for their requested spot.
         Spinner spotTypes = findViewById(R.id.spotTypes);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.spotTypes));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this,R.layout.spinner_textview,getResources().getStringArray(R.array.spotTypes));
+        myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
         spotTypes.setAdapter(myAdapter);
 
         // Create a Spinner with the spotSurfaces so that someone can choose the surface for their requested spot.
         Spinner spotSurfaces = findViewById(R.id.spotSurfaces);
-        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.spotSurfaces));
-        myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<>(this,R.layout.spinner_textview,getResources().getStringArray(R.array.spotSurfaces));
+        myAdapter2.setDropDownViewResource(R.layout.dropdown_item_textview);
         spotSurfaces.setAdapter(myAdapter2);
 
     }
@@ -105,8 +109,9 @@ public class SpotRequestActivity extends AppCompatActivity {
         // Source: https://stackoverflow.com/questions/16291800/converting-image-from-imageview-to-base64-string.
         BitmapDrawable drawable = (BitmapDrawable) spotImage.getDrawable();
         Bitmap bmap = drawable.getBitmap();
+        Bitmap bmap_resized = Bitmap.createScaledBitmap(bmap, 300, 300, true);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        bmap_resized.compress(Bitmap.CompressFormat.PNG,100,bos);
         byte[] bb = bos.toByteArray();
 
         // Define flags. Source: https://stackoverflow.com/questions/9436103/android-util-base64-encode-decode-flags-parameter.

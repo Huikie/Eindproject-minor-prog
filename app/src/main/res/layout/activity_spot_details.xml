@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#99daf2"
+    android:background="#222831"
     android:orientation="vertical"
     tools:context=".SpotDetailsActivity">
 
@@ -13,8 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:textSize="30sp" />
+        android:padding="24dp"
+        android:textColor="#00adb5"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,79 +25,103 @@
 
         <ImageView
             android:id="@+id/spotDImage"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="12dp" />
+            android:padding="6dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="6dp">
 
             <TextView
                 android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/surface"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/windspeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/winddegrees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start" />
+                android:layout_gravity="start"
+                android:textColor="#eeeeee"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/sessionsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="12dp"
-        android:text="Sessies Vandaag"
-        android:textSize="30sp" />
-
-    <ListView
-        android:id="@+id/kitersList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/createSession"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:onClick="createSession"
-        android:padding="12dp"
-        android:text="Start een Sessie" />
+        <TextView
+            android:id="@+id/sessionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="24dp"
+            android:text="Sessies Vandaag"
+            android:textColor="#00adb5"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/kitersList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></ListView>
+
+        <Button
+            android:id="@+id/createSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:backgroundTint="#00adb5"
+            android:onClick="createSession"
+            android:padding="12dp"
+            android:text="Start een Sessie"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>

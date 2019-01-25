@@ -16,16 +16,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
-            android:padding="12dp"
-            android:textSize="18sp" />
+            android:paddingLeft="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:textColor="#7fd6da"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/spotStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="start"
-            android:padding="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textColor="#eeeeee"
+            android:textSize="16sp"
             android:textStyle="italic" />
     </LinearLayout>
 
@@ -37,11 +43,14 @@
 
         <TextView
             android:id="@+id/spotType"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="start"
-            android:padding="12dp" />
+            android:paddingLeft="12dp"
+            android:paddingBottom="12dp"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/spotSurface"
@@ -49,7 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:padding="12dp" />
+            android:paddingLeft="12dp"
+            android:paddingBottom="12dp"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/spotDistance"
@@ -57,7 +69,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:padding="12dp" />
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="12dp"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

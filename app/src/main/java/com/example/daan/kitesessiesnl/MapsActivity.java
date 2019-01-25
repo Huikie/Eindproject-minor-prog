@@ -1,18 +1,15 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.annotation.ColorInt;
+
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -23,17 +20,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SpotGetRequest.Callback{
 
@@ -51,7 +44,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(Spot spot:spots){
 
             // If the spot status is equal to 1 (approved) add a marker for the spot on the map.
-            float hue = 15;
             if(spot.getStatus() == 1){
                 mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName())); // #0082b5 icon(getMarkerIcon("#000000")) .icon(getMarkerIcon("#000000"))
             }
@@ -73,7 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         Bundle coordinates = new Bundle();
                         coordinates.putParcelable("LatLng", marker.getPosition());
 
-
                         String spotType = spot.getType();
                         String spotSurface = spot.getSurface();
                         Integer spotDistance = spot.getDistance();
@@ -90,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         intent.putExtra("Image", spotImage);
                         intent.putExtra("Directions", spotWindDirections);
 
-                        startActivity(intent);
+                        try{startActivity(intent);}catch(Exception e){Log.d("bugg", e.toString());}
                     }
                 }
             }
@@ -130,8 +121,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Create a Spinner with the different Googlemap types so that the user can choose which maptype the users wants.
         Spinner mapTypes = findViewById(R.id.mapTypes);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,R.layout.map_type_textview,getResources().getStringArray(R.array.mapsViews));
-        myAdapter.setDropDownViewResource(R.layout.map_types_dropdown_item);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,R.layout.spinner_textview,getResources().getStringArray(R.array.mapsViews));
+        myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
         mapTypes.setAdapter(myAdapter);
 
         mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -209,10 +200,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    // Source: https://stackoverflow.com/questions/19076124/android-map-marker-color
-    public BitmapDescriptor getMarkerIcon(String color) {
-        float[] hsv = new float[3];
-        Color.colorToHSV(Color.parseColor(color), hsv);
-        return BitmapDescriptorFactory.defaultMarker(hsv[0]);
-    }
 }

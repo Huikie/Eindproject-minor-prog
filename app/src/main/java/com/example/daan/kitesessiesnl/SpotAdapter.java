@@ -1,9 +1,14 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +41,11 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
 
         if(index %2 == 1){
             // Set a background color for ListView regular row/item
-            convertView.setBackgroundColor(Color.parseColor("#3DB9EA"));
+            convertView.setBackgroundColor(Color.parseColor("#4e525a"));
         }
         else{
             // Set the background color for alternate row/item
-            convertView.setBackgroundColor(Color.parseColor("#54C2EC"));
+            convertView.setBackgroundColor(Color.parseColor("#383d45"));
         }
 
         TextView spotName = convertView.findViewById(R.id.spotName);
@@ -53,7 +58,8 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
         spotName.setText(spot.get(index).getName());
         spotType.setText(spot.get(index).getType());
         spotSurface.setText(spot.get(index).getSurface());
-        spotDistance.setText((spot.get(index).getDistance()).toString());
+
+        spotDistance.setText(Html.fromHtml("<b>"+(spot.get(index).getDistance()).toString() + "m" + "</b>"+ " vanaf parkeerplaats"));
 
         if(spot.get(index).getStatus() == 0){
             spotStatus.setText("(in behandeling)");

@@ -1,24 +1,24 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
-//Module class for a session.
-public class Session implements Comparable<Session> {
+import java.util.Comparator;
 
-    private String name, kite, time, spot, date;
+//Module class for a session.
+public class Session {
+
+    private String name, kite, time, spot, date, exactDate;
 
     //Constructor
-    public Session(String name, String kite, String time, String spot, String date) {
+    public Session(String name, String kite, String time, String spot, String date, String exactDate) {
         this.name = name;
         this.kite = kite;
         this.time = time;
         this.spot = spot;
         this.date = date;
-    }
-
-    /** This method defines a way to sort the list of sessions alphabetically based on the spot name.
-     * Source: https://stackoverflow.com/questions/22871583/implements-comparable-to-get-alphabetical-sort-with-strings.*/
-    @Override
-    public int compareTo(Session other) {
-        return this.spot.compareToIgnoreCase(other.spot);
+        this.exactDate = exactDate;
     }
 
     // Getters & setters.
@@ -60,5 +60,13 @@ public class Session implements Comparable<Session> {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getExactDate() {
+        return exactDate;
+    }
+
+    public void setExactDate(String exactDate) {
+        this.exactDate = exactDate;
     }
 }

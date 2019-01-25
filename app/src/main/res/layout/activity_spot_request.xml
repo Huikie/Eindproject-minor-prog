@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222831"
     android:orientation="vertical"
     tools:context=".SpotRequestActivity">
 
@@ -12,60 +13,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dp"
-        android:text="Vraag Spot Aan:"
-        android:textSize="30sp" />
+        android:padding="24dp"
+        android:text="Vraag spot aan"
+        android:textColor="#00adb5"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/spotName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="Spot naam"
         android:inputType="textPersonName"
         android:maxLength="20"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null" />
 
     <Spinner
         android:id="@+id/spotTypes"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00adb5"
+        android:padding="12dp"
+        android:popupBackground="#222831" />
 
     <Spinner
         android:id="@+id/spotSurfaces"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00adb5"
+        android:padding="12dp"
+        android:popupBackground="#222831" />
 
     <EditText
         android:id="@+id/spotDistance"
-        android:layout_width="263dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#00adb5"
         android:ems="10"
-        android:hint="Afstand tot parkeerplaats (M)"
+        android:hint="Afstand vanaf parkeerplaats (m)"
         android:inputType="number"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:textColor="#eeeeee"
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null" />
 
     <ImageView
         android:id="@+id/spotImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"></ImageView>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="12dp"></ImageView>
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonLoadPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0"
+        android:background="#222831"
         android:onClick="loadImage"
-        android:text="Laad afbeelding"></Button>
+        android:padding="12dp"
+        app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
 
 
     <Button
         android:id="@+id/doRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:backgroundTint="#00adb5"
         android:onClick="submitRequest"
         android:padding="12dp"
-        android:text="Vraag Aan" />
+        android:text="Vraag Aan"
+        android:textColor="#eeeeee"
+        android:textSize="18sp" />
 </LinearLayout>

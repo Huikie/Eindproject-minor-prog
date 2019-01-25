@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
@@ -17,7 +21,7 @@ import java.util.Map;
 public class SessionPostRequest implements Response.Listener<String>, Response.ErrorListener{
 
     Context context;
-    String name,kite,time,spot,date;
+    String name,kite,time,spot,date, exactDate;
 
     // Class that makes a PostRequest possible.
     public class PostRequest extends StringRequest {
@@ -37,6 +41,7 @@ public class SessionPostRequest implements Response.Listener<String>, Response.E
             params.put("time", time);
             params.put("spot", spot);
             params.put("date", date);
+            params.put("exactDate", exactDate);
             return params;
         }
     }
@@ -47,12 +52,13 @@ public class SessionPostRequest implements Response.Listener<String>, Response.E
     }
 
     /**Method that posts the received name, kitesize, timespan, spot, timespan and date.*/
-    public void postSession(String kiterName, String kiterKite, String sessionTime, String sessionSpot, String sessionDate){
+    public void postSession(String kiterName, String kiterKite, String sessionTime, String sessionSpot, String sessionDate, String sessionExactDate){
         spot = sessionSpot;
         name = kiterName;
         kite = kiterKite;
         time = sessionTime;
         date = sessionDate;
+        exactDate = sessionExactDate;
         String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/sessionList";
         RequestQueue queue = Volley.newRequestQueue(context);
         PostRequest postRequest = new PostRequest(Request.Method.POST, jsonUrl,this,this);

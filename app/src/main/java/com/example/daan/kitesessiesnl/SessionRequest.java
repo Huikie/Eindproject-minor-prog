@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
@@ -58,7 +62,8 @@ public class SessionRequest implements Response.Listener<JSONArray>, Response.Er
                 String kite = sessionInfo.getString("kite");
                 String time = sessionInfo.getString("time");
                 String date = sessionInfo.getString("date");
-                sessions.add(new Session(name,kite,time,spot,date));
+                String exactDate = sessionInfo.getString("exactDate");
+                sessions.add(new Session(name,kite,time,spot,date, exactDate));
 
             }
 

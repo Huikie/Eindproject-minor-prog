@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
@@ -32,13 +36,19 @@ public class SessionAdapter extends ArrayAdapter<Session> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.session, parent, false);
         }
 
+        // Alternate color of list items.
+        // Source: https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
         if(position %2 == 1){
+
             // Set a background color for ListView regular row/item
-            convertView.setBackgroundColor(Color.parseColor("#FFB6B546"));
+            convertView.setBackgroundColor(Color.parseColor("#4e525a"));
+
         }
         else{
+
             // Set the background color for alternate row/item
-            convertView.setBackgroundColor(Color.parseColor("#FFCCCB4C"));
+            convertView.setBackgroundColor(Color.parseColor("#383d45"));
+
         }
 
         int index = position;
