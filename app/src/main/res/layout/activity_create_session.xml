@@ -23,11 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
-        android:hint="Naam (Kitepro1)"
+        android:hint="Naam"
         android:inputType="textPersonName"
+        android:maxLength="20"
+        android:padding="12dp"
         android:textColor="#eeeeee"
         android:textColorHint="#7feeeeee"
         android:textCursorDrawable="@null"
@@ -38,8 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="12dp"
         android:labelFor="@+id/numbKiteSizes"
+        android:padding="12dp"
         android:text="Hoeveel kites?"
         android:textColor="#eeeeee"
         android:textSize="18sp" />
@@ -49,8 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="7dp"
         android:backgroundTint="#00adb5"
+        android:padding="12dp"
         android:popupBackground="#222831" />
 
     <EditText
@@ -58,11 +62,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat"
         android:inputType="number"
+        android:maxLength="2"
+        android:padding="12dp"
         android:textColor="#eeeeee"
         android:textColorHint="#7feeeeee"
         android:textCursorDrawable="@null"
@@ -74,11 +80,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 2"
         android:inputType="number"
+        android:maxLength="2"
+        android:padding="12dp"
         android:textColor="#eeeeee"
         android:textColorHint="#7feeeeee"
         android:textCursorDrawable="@null"
@@ -90,88 +98,85 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="maat 3"
         android:inputType="number"
-        android:textColor="#eeeeee"
-        android:textColorHint="#7feeeeee"
-        android:textCursorDrawable="@null"
-        android:textSize="18sp"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/fourthSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="#00adb5"
-        android:ems="10"
-        android:hint="maat 4"
-        android:inputType="number"
-        android:textColor="#eeeeee"
-        android:textColorHint="#7feeeeee"
-        android:textCursorDrawable="@null"
-        android:textSize="18sp"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/fifthSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="#00adb5"
-        android:ems="10"
-        android:hint="maat 5"
-        android:inputType="number"
-        android:textColor="#eeeeee"
-        android:textColorHint="#7feeeeee"
-        android:textCursorDrawable="@null"
-        android:textSize="18sp"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/startTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="false"
-        android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="#00adb5"
-        android:hint="Start Tijd"
-        android:textColor="#eeeeee"
-        android:textColorHint="#7feeeeee"
-        android:textCursorDrawable="@null"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/stopTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="false"
-        android:layout_gravity="start"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="#00adb5"
-        android:hint="Stop Tijd"
-        android:textColor="#eeeeee"
-        android:textColorHint="#7feeeeee"
-        android:textCursorDrawable="@null"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/startSession"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:background="#00adb5"
-        android:onClick="startSession"
+        android:maxLength="2"
         android:padding="12dp"
-        android:text="Start Sessie"
         android:textColor="#eeeeee"
-        android:textSize="18sp" />
+        android:textColorHint="#7feeeeee"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/startTimeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:padding="6dp"
+        app:errorEnabled="false"
+        app:errorTextAppearance="@style/error_appearance">
+
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="0"
+            android:background="#00adb5"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Begintijd"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/stopTimeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:padding="6dp"
+        app:errorTextAppearance="@style/error_appearance">
+
+        <TextView
+            android:id="@+id/stopTime"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="0"
+            android:background="#00adb5"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Eindtijd"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/startSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="#00adb5"
+            android:onClick="startSession"
+            android:padding="6dp"
+            android:text="Start Sessie"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </LinearLayout>

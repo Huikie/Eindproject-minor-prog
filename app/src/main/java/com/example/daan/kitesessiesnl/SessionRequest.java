@@ -5,7 +5,6 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;

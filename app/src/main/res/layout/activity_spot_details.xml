@@ -25,14 +25,19 @@
 
         <ImageView
             android:id="@+id/spotDImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="225dp"
             android:layout_weight="1"
-            android:padding="6dp" />
+            android:cropToPadding="false"
+            android:paddingLeft="12dp"
+            android:paddingTop="12dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="6dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:padding="6dp">
@@ -100,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="24dp"
-            android:text="Sessies Vandaag"
+            android:text="Sessies vandaag"
             android:textColor="#00adb5"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -109,6 +114,7 @@
             android:id="@+id/kitersList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
             android:layout_weight="1"></ListView>
 
         <Button
@@ -116,6 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
+            android:layout_marginBottom="6dp"
             android:backgroundTint="#00adb5"
             android:onClick="createSession"
             android:padding="12dp"

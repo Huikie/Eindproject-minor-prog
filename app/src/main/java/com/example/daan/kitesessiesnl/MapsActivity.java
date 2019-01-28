@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+/**The main activity in which the map with the spots is shown
+ * and from where the user can reach all the activities of the app.*/
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, SpotGetRequest.Callback{
 
     private GoogleMap mMap;
@@ -35,6 +37,87 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // Create a LatLngBounds that includes the Netherlands.
     private LatLngBounds NETHERLANDS = new LatLngBounds(
             new LatLng(51.803721015, 3.31497114423), new LatLng( 53.0104033474, 6.09205325687));
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Create a Spinner with the different Googlemap types so that the user can choose which maptype the users wants.
+        Spinner mapTypes = findViewById(R.id.mapTypes);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,R.layout.spinner_textview,getResources().getStringArray(R.array.mapsViews));
+        myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
+        mapTypes.setAdapter(myAdapter);
+
+        mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(id == 0){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                }
+                else if(id == 1){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                }
+                else if(id == 2){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                else if(id == 3){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // Create a ImageButton with an "addmarkericon" in it. If the users clicks this button it will see a pop up window with information about how to add a marker to the map.
+        ImageButton spotRequestButton = findViewById(R.id.spotRequest);
+        spotRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MapsActivity.this, LongClickInfo.class));
+            }
+        });
+
+        // Move the camera to the center of the Netherlands.
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
+
+        // Do a SpotGetRequest to get the spots from the API and to be able to add markers for them.
+        SpotGetRequest x = new SpotGetRequest(this);
+        x.getSpots(this);
+
+        // When the user clicks long on the map they will be able to do a SpotRequest.
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                Bundle coordinates = new Bundle();
+                coordinates.putParcelable("LatLng", latLng);
+                Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
+                intent.putExtras(coordinates);
+                startActivity(intent);
+            }
+        });
+    }
 
     /**Method that gets the spots from the API.*/
     @Override
@@ -92,92 +175,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void gotSpotsError(String message) {
         Toast.makeText(this, "Kitespots kunnen niet geladen worden. U heeft mogelijk geen verbinding tot het internet",
                 Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-
-        //getWindow().getDecorView().setBackgroundColor(Color.parseColor("#26b1e7"));
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Create a Spinner with the different Googlemap types so that the user can choose which maptype the users wants.
-        Spinner mapTypes = findViewById(R.id.mapTypes);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(MapsActivity.this,R.layout.spinner_textview,getResources().getStringArray(R.array.mapsViews));
-        myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
-        mapTypes.setAdapter(myAdapter);
-
-        mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(id == 0){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                }
-                else if(id == 1){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                }
-                else if(id == 2){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-                else if(id == 3){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-                }
-                }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        // Create a ImageButton with an "addmarkericon" in it. If the users clicks this button it will see a pop up window with information about how to add a marker to the map.
-        ImageButton spotRequestButton = findViewById(R.id.spotRequest);
-        spotRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MapsActivity.this, LongClickInfo.class));
-            }
-        });
-
-        // Constrain the camera target to the Netherlands bounds.
-        mMap.setLatLngBoundsForCameraTarget(NETHERLANDS);
-
-        // Move the camera to the center of the Netherlands.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NETHERLANDS.getCenter(), 7));
-
-        // Do a SpotGetRequest to get the spots from the API and to be able to add markers for them.
-        SpotGetRequest x = new SpotGetRequest(this);
-        x.getSpots(this);
-
-        // When the user clicks long on the map they will be able to do a SpotRequest.
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Bundle coordinates = new Bundle();
-                coordinates.putParcelable("LatLng", latLng);
-                Intent intent = new Intent(MapsActivity.this, SpotRequestActivity.class);
-                intent.putExtras(coordinates);
-                startActivity(intent);
-            }
-        });
     }
 
     /**Method that makes it possible for the user to refresh the page, so that they can see if spots are added.*/

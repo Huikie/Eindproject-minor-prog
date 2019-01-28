@@ -4,9 +4,6 @@
 
 package com.example.daan.kitesessiesnl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // Module class for a spot.
 public class Spot implements Comparable<Spot> {
 

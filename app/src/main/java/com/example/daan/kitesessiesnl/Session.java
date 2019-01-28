@@ -4,8 +4,6 @@
 
 package com.example.daan.kitesessiesnl;
 
-import java.util.Comparator;
-
 //Module class for a session.
 public class Session {
 

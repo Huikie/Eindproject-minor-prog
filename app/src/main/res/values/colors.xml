@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="statusbarColor">#393e46</color>
     <color name="titlebarColor">#26b1e7</color>
+    <color name="errorColor">#DD043B</color>
 </resources>

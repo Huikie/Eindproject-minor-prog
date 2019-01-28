@@ -8,7 +8,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,17 +21,67 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import org.json.JSONObject;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.concurrent.ExecutionException;
 
+/**Activity in which the user can see the details of a certain spot
+ * and from there go to the page where the user can start a session on this spot.*/
 public class SpotDetailsActivity extends AppCompatActivity implements WeatherRequest.Callback, SessionRequest.Callback {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_spot_details);
+
+        // Get information received from the marker that is clicked on.
+        Intent intent = getIntent();
+        LatLng coordinates = intent.getParcelableExtra("LatLng");
+        String title = intent.getStringExtra("Title");
+        String type = intent.getStringExtra("Type");
+        String surface = intent.getStringExtra("Surface");
+        String distance = intent.getStringExtra("Distance");
+        String imageId = intent.getStringExtra("Image");
+
+        // Decode the Base64 String and create the image in the spotdetailsactivity ImageView.
+        try{
+            int flags = Base64.NO_WRAP | Base64.URL_SAFE;
+            byte[] imageIdDecoded = Base64.decode(imageId,flags);
+
+            Bitmap bmp = BitmapFactory.decodeByteArray(imageIdDecoded, 0, imageIdDecoded.length);
+
+            ImageView spotImage = findViewById(R.id.spotDImage);
+            spotImage.setImageBitmap(Bitmap.createScaledBitmap(bmp, bmp.getWidth(),
+                    bmp.getHeight(), false));}
+
+        catch(Exception e){
+            Log.d("bug", e.toString());
+        }
+
+        TextView spotdetailsTitle = findViewById(R.id.spotDetailsTitle);
+        spotdetailsTitle.setText(title);
+
+        TextView spotdetailsType = findViewById(R.id.type);
+        spotdetailsType.setText(Html.fromHtml("<b>Spot type:</b> "+type));
+
+        TextView spotdetailsSurface = findViewById(R.id.surface);
+        spotdetailsSurface.setText(Html.fromHtml("<b>Spot ondergrond:</b> "+surface));
+
+        TextView spotdetailsDistance = findViewById(R.id.distance);
+        spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "m"+"<br>"));
+
+        // Do a WeatherRequest to get the current weatherinfo for the location of the marker that the user clicked on.
+        WeatherRequest x = new WeatherRequest(this);
+        x.getWeatherInfo(this, coordinates.latitude, coordinates.longitude);
+
+        // Do a SessionRequest to be able to show the user all the sessions that are started today.
+        SessionRequest x2 = new SessionRequest(this);
+        x2.getSessions(this);
+
+    }
 
     /**Method that makes sure that only the sessions are displayed from the spot that is clicked on by the user.*/
     @Override
@@ -153,62 +202,6 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
     public void gotWeatherInfoError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spot_details);
-
-//            Intent intent = getIntent();
-//            finish();
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//            startActivity(intent);
-
-        // Get information received from the marker that is clicked on.
-        Intent intent = getIntent();
-        LatLng coordinates = intent.getParcelableExtra("LatLng");
-        String title = intent.getStringExtra("Title");
-        String type = intent.getStringExtra("Type");
-        String surface = intent.getStringExtra("Surface");
-        String distance = intent.getStringExtra("Distance");
-        String imageId = intent.getStringExtra("Image");
-
-        // Decode the Base64 String and create the image in the spotdetailsactivity ImageView.
-        try{
-            int flags = Base64.NO_WRAP | Base64.URL_SAFE;
-            byte[] imageIdDecoded = Base64.decode(imageId,flags);
-
-            Bitmap bmp = BitmapFactory.decodeByteArray(imageIdDecoded, 0, imageIdDecoded.length);
-
-            ImageView spotImage = findViewById(R.id.spotDImage);
-            spotImage.setImageBitmap(Bitmap.createScaledBitmap(bmp, bmp.getWidth(),
-                bmp.getHeight(), false));}
-
-                catch(Exception e){
-            Log.d("bug", e.toString());
-        }
-
-        TextView spotdetailsTitle = findViewById(R.id.spotDetailsTitle);
-        spotdetailsTitle.setText(title);
-
-        TextView spotdetailsType = findViewById(R.id.type);
-        spotdetailsType.setText(Html.fromHtml("<b>Spot type:</b> "+type));
-
-        TextView spotdetailsSurface = findViewById(R.id.surface);
-        spotdetailsSurface.setText(Html.fromHtml("<b>Spot ondergrond:</b> "+surface));
-
-        TextView spotdetailsDistance = findViewById(R.id.distance);
-        spotdetailsDistance.setText(Html.fromHtml("<b>Spot afstand:</b> "+distance + "m"+"<br>"));
-
-        // Do a WeatherRequest to get the current weatherinfo for the location of the marker that the user clicked on.
-        WeatherRequest x = new WeatherRequest(this);
-        x.getWeatherInfo(this, coordinates.latitude, coordinates.longitude);
-
-        // Do a SessionRequest to be able to show the user all the sessions that are started today.
-        SessionRequest x2 = new SessionRequest(this);
-        x2.getSessions(this);
-
-        }
 
     /**Method that directs users from the spot details page to the page where they can create a session.*/
     public void createSession(View view) {

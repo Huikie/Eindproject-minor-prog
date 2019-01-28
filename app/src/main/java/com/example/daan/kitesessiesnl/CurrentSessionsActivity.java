@@ -1,8 +1,6 @@
 package com.example.daan.kitesessiesnl;
 
 import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +14,19 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**Activity in which the user can see the sessions that are planned today.*/
 public class CurrentSessionsActivity extends AppCompatActivity implements SessionRequest.Callback{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_current_sessions);
+
+        // Do a SessionRequest to get the sessions from the API, to be able to show all sessions from today.
+        SessionRequest x = new SessionRequest(this);
+        x.getSessions(this);
+
+    }
 
     /**Method that is used when the ArrayList of sessions is retrieved successfully.*/
     @Override
@@ -32,19 +42,26 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
 
             // If the date of the started sessions is equal to the today's date add this session to a new array and put it in the currentSessionList.
             if (session.getDate().equals(timeStamp)) {
-                Log.d("today", "today");
                     todaySessions.add(session);
 
-                /** This method defines a way to sort the list of sessions alphabetically based on the spot name.
-                 * Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class.*/
+                /** This method defines a way to sort the list of sessions alphabetically based on the spot name and start time.
+                 * Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class.
+                 * Source2: https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java*/
                 Comparator<Session> alphabeticSpot = new Comparator<Session>() {
                     @Override
                     public int compare(Session session, Session otherSession) {
-                        return session.getSpot().compareToIgnoreCase(otherSession.getSpot());
+                        int compareSpot = session.getSpot().compareToIgnoreCase(otherSession.getSpot());
+
+                        if(compareSpot != 0){
+                            return compareSpot;
+                        }
+
+                        // Most current sessions first.
+                        return otherSession.getExactDate().compareTo(session.getExactDate());
                     }
                 };
 
-                    // Sort the sessions in alphabetic order based on the spot name.
+                    // Sort the sessions in alphabetic order based on the spot name and after that on the most current sessions first.
                     Collections.sort(todaySessions, alphabeticSpot);
 
                     // Using the created SessionAdapter to put the sessions nicely in a ListView.
@@ -72,14 +89,4 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_sessions);
-
-        // Do a SessionRequest to get the sessions from the API, to be able to show all sessions from today.
-        SessionRequest x = new SessionRequest(this);
-        x.getSessions(this);
-
-    }
 }

@@ -7,6 +7,7 @@ package com.example.daan.kitesessiesnl;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -74,7 +75,14 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
         lon = spotLong;
         String jsonUrl = "https://ide50-huikie.legacy.cs50.io:8080/spotList";
         RequestQueue queue = Volley.newRequestQueue(context);
-        SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST, jsonUrl,this,this);
+        SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST,jsonUrl,this,this);
+
+        // https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         queue.add(postRequest);
     }
 

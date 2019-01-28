@@ -23,6 +23,7 @@
         android:id="@+id/spotName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="Spot naam"
@@ -37,6 +38,7 @@
         android:id="@+id/spotTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
         android:backgroundTint="#00adb5"
         android:padding="12dp"
         android:popupBackground="#222831" />
@@ -45,14 +47,16 @@
         android:id="@+id/spotSurfaces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
         android:backgroundTint="#00adb5"
         android:padding="12dp"
         android:popupBackground="#222831" />
 
     <EditText
         android:id="@+id/spotDistance"
-        android:layout_width="280dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
         android:backgroundTint="#00adb5"
         android:ems="10"
         android:hint="Afstand vanaf parkeerplaats (m)"
@@ -64,29 +68,66 @@
 
     <ImageView
         android:id="@+id/spotImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="250dp"
+        android:layout_height="225dp"
+        android:layout_marginLeft="12dp"
         android:padding="12dp"></ImageView>
 
-    <ImageButton
-        android:id="@+id/buttonLoadPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#222831"
-        android:onClick="loadImage"
-        android:padding="12dp"
-        app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/buttonLoadPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:background="#222831"
+            android:onClick="loadImage"
+            android:padding="12dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+
+        <TextView
+            android:id="@+id/errorMessageSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="De afbeelding die u gekozen heeft is te groot. Kies een afbeelding die kleiner is dan 0.5 mb."
+            android:textColor="@color/errorColor"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/errorMessageEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_weight="1"
+            android:text="Kies een afbeelding"
+            android:textColor="@color/errorColor"
+            android:visibility="gone" />
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/doRequest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:backgroundTint="#00adb5"
-        android:onClick="submitRequest"
-        android:padding="12dp"
-        android:text="Vraag Aan"
-        android:textColor="#eeeeee"
-        android:textSize="18sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/doRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:backgroundTint="#00adb5"
+            android:onClick="submitRequest"
+            android:padding="12dp"
+            android:text="Vraag Aan"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </LinearLayout>

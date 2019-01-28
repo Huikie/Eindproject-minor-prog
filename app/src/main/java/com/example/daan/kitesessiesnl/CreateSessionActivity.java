@@ -6,8 +6,10 @@ package com.example.daan.kitesessiesnl;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,8 +39,9 @@ public class CreateSessionActivity extends AppCompatActivity {
         TextView sessionTitle = findViewById(R.id.sessionTitle);
         sessionTitle.setText(title);
 
-        EditText startTime = findViewById(R.id.startTime);
-        EditText stopTime = findViewById(R.id.stopTime);
+        TextView startTime = findViewById(R.id.startTime);
+        TextView stopTime = findViewById(R.id.stopTime);
+
 
         // Use the chooseTime method defined below to let users be able to pick a start and stop time with a nice time picker.
         chooseTime(startTime);
@@ -49,7 +53,44 @@ public class CreateSessionActivity extends AppCompatActivity {
         myAdapter.setDropDownViewResource(R.layout.dropdown_item_textview);
         numberKites.setAdapter(myAdapter);
 
-        // Create an OnItemSelectedListener for the created Spinnner.
+        // Show necessary EditTexts for user.
+        editTextActivater(numberKites);
+
+    }
+
+    /**Method that takes an EditText and when click on the EditText the method shows a TimePickerDialog
+     * and if the user chooses a time the time will be displayed in the EditText.
+     * Source: https://www.codingdemos.com/android-timepicker-edittext/*/
+    public void chooseTime(final TextView time){
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateSessionActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        time.setText(String.format("%02d:%02d", hourOfDay, minutes));
+
+                        TextInputLayout startTimeLayout = findViewById(R.id.startTimeLayout);
+                        TextInputLayout stopTimeLayout = findViewById(R.id.stopTimeLayout);
+
+                        TextView startTime = findViewById(R.id.startTime);
+                        TextView stopTime = findViewById(R.id.stopTime);
+
+                        if(!startTime.getText().equals("Begintijd")){
+                            startTimeLayout.setError(null);
+                        }
+                        if(!stopTime.getText().equals("Eindtijd")){
+                            stopTimeLayout.setError(null);
+                        }
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
+            }
+        });
+    }
+
+    /**Method that makes the amount of EditTexts visible that is equal to the amount of kites the user selects.*/
+    public void editTextActivater(Spinner numberKites){
         numberKites.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -57,17 +98,12 @@ public class CreateSessionActivity extends AppCompatActivity {
                 EditText sizeOne = findViewById(R.id.firstSize);
                 EditText sizeTwo = findViewById(R.id.secondSize);
                 EditText sizeThree = findViewById(R.id.thirdSize);
-                EditText sizeFour = findViewById(R.id.fourthSize);
-                EditText sizeFive = findViewById(R.id.fifthSize);
 
                 // When numbKites chosen is equal to 1 set only the first EditText to VISIBLE.
                 if(id == 0){
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.GONE);
                     sizeThree.setVisibility(View.GONE);
-                    sizeFour.setVisibility(View.GONE);
-                    sizeFive.setVisibility(View.GONE);
-
                 }
 
                 // When numbKites chosen is equal to 2 set the first & second EditText to VISIBLE.
@@ -75,8 +111,6 @@ public class CreateSessionActivity extends AppCompatActivity {
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.VISIBLE);
                     sizeThree.setVisibility(View.GONE);
-                    sizeFour.setVisibility(View.GONE);
-                    sizeFive.setVisibility(View.GONE);
                 }
 
                 // When numbKites chosen is equal to 3 set the first, second & third EditText to VISIBLE.
@@ -84,26 +118,6 @@ public class CreateSessionActivity extends AppCompatActivity {
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.VISIBLE);
                     sizeThree.setVisibility(View.VISIBLE);
-                    sizeFour.setVisibility(View.GONE);
-                    sizeFive.setVisibility(View.GONE);
-                }
-
-                // When numbKites chosen is equal to 4 set the first, second, third & fourth EditText to VISIBLE.
-                else if(id == 3){
-                    sizeOne.setVisibility(View.VISIBLE);
-                    sizeTwo.setVisibility(View.VISIBLE);
-                    sizeThree.setVisibility(View.VISIBLE);
-                    sizeFour.setVisibility(View.VISIBLE);
-                    sizeFive.setVisibility(View.GONE);
-                }
-
-                // When numbKites chosen is equal to 5 set all the EditTexts to VISIBLE.
-                else{
-                    sizeOne.setVisibility(View.VISIBLE);
-                    sizeTwo.setVisibility(View.VISIBLE);
-                    sizeThree.setVisibility(View.VISIBLE);
-                    sizeFour.setVisibility(View.VISIBLE);
-                    sizeFive.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -114,46 +128,28 @@ public class CreateSessionActivity extends AppCompatActivity {
         });
     }
 
-    /**Method that takes an EditText and when click on the EditText the method shows a TimePickerDialog
-     * and if the user chooses a time the time will be displayed in the EditText.
-     * Source: https://www.codingdemos.com/android-timepicker-edittext/*/
-    public void chooseTime(final EditText editText){
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateSessionActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        editText.setText(String.format("%02d:%02d", hourOfDay, minutes));
-                    }
-                }, 0, 0, false);
-                timePickerDialog.show();
-            }
-        });
-    }
-
     /**Method that allows users start a session with their information.*/
-    public void startSession(View view){
+    public void startSession(View view) {
 
         EditText sizeOne = findViewById(R.id.firstSize);
         EditText sizeTwo = findViewById(R.id.secondSize);
         EditText sizeThree = findViewById(R.id.thirdSize);
-        EditText sizeFour = findViewById(R.id.fourthSize);
-        EditText sizeFive = findViewById(R.id.fifthSize);
 
         // Create an ArrayList of the 5 EditTexts above.
         ArrayList<EditText> al = new ArrayList<>();
         al.add(sizeOne);
         al.add(sizeTwo);
         al.add(sizeThree);
-        al.add(sizeFour);
-        al.add(sizeFive);
 
         // Build up a string of the input of the users in the EditText(s) by looping through the input.
+        ArrayList<EditText> emptyEditTexts = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for(EditText size:al){
-            if(size.getVisibility() == View.VISIBLE){
-                sb.append(size.getText().toString()+"m ");
+        for (EditText size : al) {
+            if (size.getVisibility() == View.VISIBLE) {
+                sb.append(size.getText().toString() + "m ");
+                if (TextUtils.isEmpty(size.getText())) {
+                    emptyEditTexts.add(size);
+                }
             }
         }
 
@@ -163,11 +159,14 @@ public class CreateSessionActivity extends AppCompatActivity {
         EditText name = findViewById(R.id.name);
         String nameTxt = name.getText().toString();
 
-        EditText startTime = findViewById(R.id.startTime);
-        EditText stopTime = findViewById(R.id.stopTime);
+        TextView startTime = findViewById(R.id.startTime);
+        TextView stopTime = findViewById(R.id.stopTime);
 
         String startTimeTxt = startTime.getText().toString();
         String stopTimeTxt = stopTime.getText().toString();
+
+        TextInputLayout startTimeLayout = findViewById(R.id.startTimeLayout);
+        TextInputLayout stopTimeLayout = findViewById(R.id.stopTimeLayout);
 
         // Create a timestamp to keep track on what day the user started his session.
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
@@ -175,13 +174,36 @@ public class CreateSessionActivity extends AppCompatActivity {
         // Create a timestamp to keep track exactly when the user started his session.
         String timeStampExact = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss").format(Calendar.getInstance().getTime());
 
-        // Post session information of a user to my online database.
-        SessionPostRequest x = new SessionPostRequest(this);
-        x.postSession(nameTxt, sb.toString(), startTimeTxt + " - " + stopTimeTxt, spotTitleTxt, timeStamp, timeStampExact);
+        if (TextUtils.isEmpty(name.getText())){
+            Log.d("emptyname","name");
+            name.setError("Voer een naam in!");
+        }
 
-        // Heads the user back to the map activity after he/she started a session.
-        try{Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);}catch(Exception e){Log.d("bug", "bugg");};
+        if (emptyEditTexts.size() != 0) {
+            for (EditText size : emptyEditTexts) {
+                Log.d("emptysizes","size");
+                size.setError("Voer een maat in!");
+            }
+        }
 
+        if(startTime.getText().equals("Begintijd")){
+            startTimeLayout.setError("Kies een begintijd!");
+        }
+
+        if(stopTime.getText().equals("Eindtijd")){
+            stopTimeLayout.setError("Kies een eindtijd!");
+        }
+
+       else if(!TextUtils.isEmpty(name.getText()) && emptyEditTexts.size() == 0 && !stopTime.getText().equals("Eindtijd") && !startTime.getText().equals("Begintijd")){
+
+            // Post session information of a user to my online database.
+            SessionPostRequest x = new SessionPostRequest(this);
+            x.postSession(nameTxt, sb.toString(), startTimeTxt + " - " + stopTimeTxt, spotTitleTxt, timeStamp, timeStampExact);
+
+            // Heads the user back to the map activity after he/she started a session.
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
+
+        }
     }
 }
