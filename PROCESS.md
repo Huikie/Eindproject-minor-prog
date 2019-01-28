@@ -32,8 +32,12 @@
 # dag 11 - 22-jan
 - Kleurenpatroon gevonden dat mij mooi lijkt voor de applicatie: https://colorhunt.co/palette/2763. Voor 2 activiteiten geimplementeerd en nu nog voorleggen aan verschillende mensen voordat ik het definitief implementeer in alle activiteiten.
 - Besloten om 'items' in 'ListViews' om de beurt een andere kleur te geven, zodat de lijst niet één groot blok wordt.
+- Besloten om een limiet van 0.5 mb te stellen op de grote van afbeeldingen die gebruikers mogen uploaden bij het doen van een spotaanvraag. De reden hiervoor is dat ik Base64 encoding gebruik en hoe groter de afbeelding des te langzamer het laden van de spots wordt, omdat dan de Base64 string die uit de database gelezen moet worden ook groter is.
 # dag 12 - 23-jan
-- Besloten om titels in #00adb5 dikgedrukt te doen met een lettertype van 30dp. De achtergrond #222831 gemaakt en de statusbar #393e46 gemaakt. Voor normale tekst heb ik #eeeeee als kleur gekozen en een lettertype van 18dp, waarbij sommige teksten die er meer uit moeten springen 20dp zijn of dikgedrukt of schuingedrukt. Daarnaast besloten om de titelbar weg te laten, omdat de titelbar geen toegevoegde waarde heeft voor de gebruiker.
+- Besloten om titels in #00adb5 dikgedrukt te doen met een lettertype van 30dp. De achtergrond #222831 gemaakt en de statusbar #393e46 gemaakt. Voor normale tekst heb ik #eeeeee als kleur gekozen en een lettertype van 18dp, waarbij sommige teksten die er meer uit moeten springen 20dp zijn of dikgedrukt of schuingedrukt. Daarnaast besloten om de titelbar weg te laten, omdat de titelbar geen toegevoegde waarde heeft voor de gebruiker. Ook gekozen om alle elementen minimaal 12dp van de kant af te halen om de leesbaarheid te vergroten en titels 24dp padding te geven, zodat deze er goed uitspringen.
 # Hackathon - 24-jan
 # dag 13 - 25-jan
+- Besloten om drie verschillende manieren van errors weergeven bij missende of verkeerde userinput te gebruiken. Voor userinput in EditTetxs wordt een functie setError(string) gebruikt. Dit resulteert in een klein rood icoontje die als je er op klikt laat zien wat vereist is in het input veld. Bij het kiezen van de begin en eindtijd door de gebruiker leverde deze manier geen mooie layout op waardoor ik ervoor gekozen heb om de TextViews die aangeven wat er gekozen moet worden (begin en eindtijd) in een TextInputLayout te stoppen waardoor het mogelijk wordt om een custom error message onder deze TextViews te weergeven als er verkeerde input wordt gegeven. Daarnaast voor errors bij het uploaden van afbeeldingen heb ik gekozen om TextViews met daarin een errormessage normaal gesproken op 'visibility gone' zet en waarneer het nodig is maak ik deze berichten 'visible'. 
+# dag 14 - 28-jan
+
 
