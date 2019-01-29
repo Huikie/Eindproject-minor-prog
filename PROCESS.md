@@ -39,5 +39,12 @@
 # dag 13 - 25-jan
 - Besloten om drie verschillende manieren van errors weergeven bij missende of verkeerde userinput te gebruiken. Voor userinput in EditTetxs wordt een functie setError(string) gebruikt. Dit resulteert in een klein rood icoontje die als je er op klikt laat zien wat vereist is in het input veld. Bij het kiezen van de begin en eindtijd door de gebruiker leverde deze manier geen mooie layout op waardoor ik ervoor gekozen heb om de TextViews die aangeven wat er gekozen moet worden (begin en eindtijd) in een TextInputLayout te stoppen waardoor het mogelijk wordt om een custom error message onder deze TextViews te weergeven als er verkeerde input wordt gegeven. Daarnaast voor errors bij het uploaden van afbeeldingen heb ik gekozen om TextViews met daarin een errormessage normaal gesproken op 'visibility gone' zet en waarneer het nodig is maak ik deze berichten 'visible'. 
 # dag 14 - 28-jan
+- Besloten om een korte vertraging te maken nadat gebruikers een sessie gestart hebben en nadat gebruikers een spotaanvraag gedaan hebben. In deze vertraging laat ik een bericht zien dat de handeling succesvol verricht is op/voor de specifieke spot. Was ook mogelijk geweest om ze terug te sturen naar respectievelijk de SpotDetailsActivity (waar sessies op de spot te zien zijn) en de SpotStatusActivity (waar alle spots te zien zijn ook de aangevraagde), maar door tijdgebrek dit laten zitten.
+- Besloten om aan alle ListViews een duidelijke scrollbar toe te voegen, zodat duidelijk is dat er meer informatie onder staat en dat dit bereikt kan worden door te scrollen.
+# dag 15 - 29-jan
+- Besloten om in de 'Infowindow' van een spot (marker) achter de titel '>>' te plaatsen, zodat duidelijk is dat er op deze Infowindow geklikt kan worden om informatie over deze spots te zien te krijgen.
+- Besloten om bij alle 'Requests' een error te geven in de vorm van een 'Toast' als de Request niet succesvol verloopt.
+# dag 16 - 30-jan
+
 
 
