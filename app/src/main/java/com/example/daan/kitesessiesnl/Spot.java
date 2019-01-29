@@ -4,12 +4,12 @@
 
 package com.example.daan.kitesessiesnl;
 
-// Module class for a spot.
+/** Module class for a spot.*/
 public class Spot implements Comparable<Spot> {
 
-    String name, type, surface, imageId;
-    Integer distance, directionId, status;
-    Double lat, lon;
+    private String name, type, surface, imageId;
+    private Integer distance, directionId, status;
+    private Double lat, lon;
 
     // Constructor.
     public Spot(String name, String type, String surface, Integer distance, String imageId, Integer directionId, Integer status, Double lat, Double lon) {
@@ -25,7 +25,7 @@ public class Spot implements Comparable<Spot> {
     }
 
         /** This method defines a way to sort the list of spots alphabetically based on the spot name.
-        * I found this way of sorting a list in the following video: https://www.youtube.com/watch?v=hncd_WgF83c.*/
+        * Source: https://www.youtube.com/watch?v=hncd_WgF83c.*/
         @Override
         public int compareTo(Spot other) {
             return this.name.compareToIgnoreCase(other.name);

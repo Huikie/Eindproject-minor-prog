@@ -3,7 +3,6 @@ package com.example.daan.kitesessiesnl;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +29,7 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
 
     /**Method that is used when the ArrayList of sessions is retrieved successfully.*/
     @Override
-    public void gotSessions(final ArrayList<Session> sessions){
+    public void gotSessions(final ArrayList<Session> sessions) {
 
         final ArrayList<Session> todaySessions = new ArrayList<>();
 
@@ -44,12 +43,14 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
             if (session.getDate().equals(timeStamp)) {
                     todaySessions.add(session);
 
-                /** This method defines a way to sort the list of sessions alphabetically based on the spot name and start time.
-                 * Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class.
-                 * Source2: https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java*/
+                // This method defines a way to sort the list of sessions alphabetically based on the spot name and start time.
+                // Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class
+                // Source2: https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java
                 Comparator<Session> alphabeticSpot = new Comparator<Session>() {
                     @Override
                     public int compare(Session session, Session otherSession) {
+
+                        // Spots in alphabetic order on spot name.
                         int compareSpot = session.getSpot().compareToIgnoreCase(otherSession.getSpot());
 
                         if(compareSpot != 0){
@@ -86,7 +87,8 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
     /**Method that shows the user an error message when the ArrayList of sessions isn't retrieved successfully.*/
     @Override
     public void gotSessionsError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Sessies kunnen niet geladen worden. U heeft mogelijk geen verbinding tot het internet.",
+                Toast.LENGTH_LONG).show();
     }
 
 }

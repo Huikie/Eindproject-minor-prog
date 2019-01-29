@@ -17,10 +17,11 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+/**Helper that is used to POST sessions in the online database when one is created in the CreateSessionActivity.*/
 public class SessionPostRequest implements Response.Listener<String>, Response.ErrorListener{
 
-    Context context;
-    String name,kite,time,spot,date, exactDate;
+    private Context context;
+    private String name,kite,time,spot,date, exactDate;
 
     // Class that makes a PostRequest possible.
     public class PostRequest extends StringRequest {
@@ -62,7 +63,8 @@ public class SessionPostRequest implements Response.Listener<String>, Response.E
         RequestQueue queue = Volley.newRequestQueue(context);
         PostRequest postRequest = new PostRequest(Request.Method.POST, jsonUrl,this,this);
 
-        // https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
+        // To prevent that a session is posted twice.
+        // Source: https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
         postRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

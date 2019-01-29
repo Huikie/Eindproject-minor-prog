@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -111,8 +109,6 @@ public class SpotRequestActivity extends AppCompatActivity {
         }
     }
 
-    Integer globalDistance;
-
     /**Method that directs users back to the map page when they've submitted their spot request.*/
     public void submitRequest(View view) {
 
@@ -134,19 +130,16 @@ public class SpotRequestActivity extends AppCompatActivity {
 
         // If the user didn't put in a spot name, show an error message.
         if (TextUtils.isEmpty(spotName.getText())) {
-            Log.d("emptyspot","1");
             spotName.setError("Voer een spot naam in!");
         }
 
         // If the user didn't put in a spot distance, show an error message.
         if (TextUtils.isEmpty(spotDistance.getText())){
-            Log.d("emptydistance","2");
             spotDistance.setError("Voer een afstand in!");
         }
 
         // If the user didn't put in a spot image, show an error message.
         if (spotImage.getDrawable() == null){
-            Log.d("emptyimage","3");
             TextView errorMessage = findViewById(R.id.errorMessageEmpty);
             TextView errorMessageSize = findViewById(R.id.errorMessageSize);
             errorMessageSize.setVisibility(View.GONE);
@@ -184,6 +177,7 @@ public class SpotRequestActivity extends AppCompatActivity {
 
                 Intent intent2 = new Intent(this, MapsActivity.class);
                 startActivity(intent2);
+                finish();
             }
     }
 

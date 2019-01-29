@@ -5,23 +5,20 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.common.api.Response;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 
+/**Helper that is used to GET weatherinfo from the weather API when weahterinfo is needed.*/
 public class WeatherRequest implements com.android.volley.Response.Listener<JSONObject>, com.android.volley.Response.ErrorListener{
-    Context context;
-    Callback callbackActivity;
+    private Context context;
+    private Callback callbackActivity;
 
     /**Method that makes it possible to do a callback from a different activity.*/
     public interface Callback {

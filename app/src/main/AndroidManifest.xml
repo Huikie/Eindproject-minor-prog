@@ -49,11 +49,10 @@
         <activity android:name=".SpotDetailsActivity" />
         <activity android:name=".CreateSessionActivity" />
         <activity android:name=".SpotRequestActivity" />
-        <activity
-            android:name=".LongClickInfo"
-            android:theme="@style/AppTheme.MyTheme" />
         <activity android:name=".CurrentSessionsActivity" />
-        <activity android:name=".SpotStatusActivity"></activity>
+        <activity android:name=".SpotStatusActivity" />
+        <activity android:name=".LongClickInfoActivity"
+            android:theme="@style/AppTheme.MyTheme" />
     </application>
 
 </manifest>

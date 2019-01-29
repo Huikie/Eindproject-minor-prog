@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,23 +45,21 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         String distance = intent.getStringExtra("Distance");
         String imageId = intent.getStringExtra("Image");
 
-        // Decode the Base64 String and create the image in the spotdetailsactivity ImageView.
-        try{
-            int flags = Base64.NO_WRAP | Base64.URL_SAFE;
-            byte[] imageIdDecoded = Base64.decode(imageId,flags);
+        // Decode the Base64 String and create the image in the SpotDetailsActivity ImageView.
+        int flags = Base64.NO_WRAP | Base64.URL_SAFE;
+        byte[] imageIdDecoded = Base64.decode(imageId,flags);
 
-            Bitmap bmp = BitmapFactory.decodeByteArray(imageIdDecoded, 0, imageIdDecoded.length);
+        Bitmap bmp = BitmapFactory.decodeByteArray(imageIdDecoded, 0, imageIdDecoded.length);
 
-            ImageView spotImage = findViewById(R.id.spotDImage);
-            spotImage.setImageBitmap(Bitmap.createScaledBitmap(bmp, bmp.getWidth(),
-                    bmp.getHeight(), false));}
-
-        catch(Exception e){
-            Log.d("bug", e.toString());
-        }
+        ImageView spotImage = findViewById(R.id.spotDImage);
+        spotImage.setImageBitmap(Bitmap.createScaledBitmap(bmp, bmp.getWidth(),bmp.getHeight(), false));
 
         TextView spotdetailsTitle = findViewById(R.id.spotDetailsTitle);
-        spotdetailsTitle.setText(title);
+
+        // Trim the title so that the ' >>' is removed.
+        String titleTrimmed = title.substring(0, title.length() - 3);
+
+        spotdetailsTitle.setText(titleTrimmed);
 
         TextView spotdetailsType = findViewById(R.id.type);
         spotdetailsType.setText(Html.fromHtml("<b>Spot type:</b> "+type));
@@ -100,8 +97,8 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
 
                 s2.add(session);
 
-                /** This method defines a way to sort the list of sessions alphabetically based on the date.
-                 * Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class.*/
+                // This method defines a way to sort the list of sessions alphabetically based on the date.
+                // Source: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class
                 Comparator<Session> lastOnesFirst = new Comparator<Session>() {
                     @Override
                     public int compare(Session session, Session otherSession) {
@@ -134,7 +131,8 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
     /**The sessions aren't received correctly, an error message will be shown.*/
     @Override
     public void gotSessionsError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Spotinformatie kon niet geladen worden. U heeft mogelijk geen verbinding tot het internet.",
+                Toast.LENGTH_LONG).show();
     }
 
     /**This method receives the weatherinfo if the request has been made successfully.*/
@@ -159,6 +157,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         temperature.setText(Html.fromHtml("<b>Temperatuur:</b> "+roundCelsius.toString() + " " + "℃"));
 
         // Determined the wind direction in letters based on the degree received from the API.
+        // Programmed myself, but degrees and corresponding letters are from the source below.
         // Source: https://uni.edu/storm/Wind%20Direction%20slide.pdf
         if (weatherInfo.getDegrees() <= 360 && weatherInfo.getDegrees() >= 350 || weatherInfo.getDegrees() <= 10) {
             winddegrees.setText(Html.fromHtml("<b>Windrichting:</b> " +"N" + " " + "(" + weatherInfo.getDegrees().toString() + " " + "º" + ")"));
@@ -200,7 +199,8 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
     /**The weatherinfo isn't received correctly, an error message will be shown.*/
     @Override
     public void gotWeatherInfoError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Weerinformatie kon niet geladen worden. U heeft mogelijk geen verbinding tot het internet.",
+                Toast.LENGTH_LONG).show();
     }
 
     /**Method that directs users from the spot details page to the page where they can create a session.*/

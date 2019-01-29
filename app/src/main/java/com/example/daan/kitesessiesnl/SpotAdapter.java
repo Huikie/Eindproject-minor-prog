@@ -17,9 +17,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**Adapter that is used to display the spots nicely in the SpotStatusActivity.*/
 public class SpotAdapter extends ArrayAdapter<Spot>{
 
-    ArrayList<Spot> spot;
+    private ArrayList<Spot> spot;
 
     // Constructor.
     public SpotAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Spot> objects) {

@@ -15,22 +15,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**Helper that is used to POST spots in the online database when a spot request is done in the SpotRequestActivity.*/
 public class SpotPostRequest implements Response.Listener<String>, Response.ErrorListener {
 
-    Context context;
-    String name, type, surface, imageId;
-    Integer distance, directionId, status;
-    Double lat,lon;
-
-    /**Method that makes a callback possible.*/
-//    public interface Callback {
-//        void postedSpots(Boolean status);
-//        void postedSpotsError(String message);
-//    }
+    private Context context;
+    private String name, type, surface, imageId;
+    private Integer distance, directionId, status;
+    private Double lat,lon;
 
     // Class that makes a PostRequest possible.
     public class PostRequest extends StringRequest {
@@ -77,7 +71,8 @@ public class SpotPostRequest implements Response.Listener<String>, Response.Erro
         RequestQueue queue = Volley.newRequestQueue(context);
         SpotPostRequest.PostRequest postRequest = new SpotPostRequest.PostRequest(Request.Method.POST,jsonUrl,this,this);
 
-        // https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
+        // To prevent that a spot is posted twice.
+        // Source: https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
         postRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

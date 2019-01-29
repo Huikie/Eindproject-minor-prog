@@ -18,11 +18,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**Helper that is used to GET sessions from the online database when those are needed.*/
 public class SessionRequest implements Response.Listener<JSONArray>, Response.ErrorListener{
 
-    Context context;
-    Callback callbackActivity;
-    ArrayList<Session> sessions = new ArrayList<>();
+    private Context context;
+    private Callback callbackActivity;
+    private ArrayList<Session> sessions = new ArrayList<>();
 
     /**Method that makes a callback possible.*/
     public interface Callback {

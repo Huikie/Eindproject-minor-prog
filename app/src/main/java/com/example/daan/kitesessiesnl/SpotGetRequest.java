@@ -21,11 +21,12 @@ import java.util.ArrayList;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
+/**Helper that is used to GET spots from the online database when those are needed.*/
 public class SpotGetRequest implements Response.Listener<JSONArray>, Response.ErrorListener{
 
-    Context context;
-    Callback callbackActivity;
-    ArrayList<Spot> spots = new ArrayList<>();
+    private Context context;
+    private Callback callbackActivity;
+    private ArrayList<Spot> spots = new ArrayList<>();
 
     /**Method that makes a callback possible.*/
     public interface Callback {

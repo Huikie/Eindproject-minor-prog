@@ -7,6 +7,7 @@ package com.example.daan.kitesessiesnl;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class SpotStatusActivity extends AppCompatActivity implements SpotGetRequ
 
     @Override
     public void gotSpotsError(String message) {
-
+        Toast.makeText(this, "Kitespots kunnen niet geladen worden. U heeft mogelijk geen verbinding tot het internet.",
+                Toast.LENGTH_LONG).show();
     }
 }

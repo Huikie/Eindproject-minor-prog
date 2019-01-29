@@ -9,8 +9,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 
 /**Activity that occurs when a user clicks on the add marker button.
- * The user then gets information about how he/she can do a spot request.*/
-public class LongClickInfo extends Activity {
+ * The user then gets information about how he/she can do a spot request.
+ * Source: https://www.youtube.com/watch?v=fn5OlqQuOCk*/
+public class LongClickInfoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,4 +28,5 @@ public class LongClickInfo extends Activity {
         getWindow().setLayout((int)(width*.6),(int)(height*.31));
 
     }
+
 }

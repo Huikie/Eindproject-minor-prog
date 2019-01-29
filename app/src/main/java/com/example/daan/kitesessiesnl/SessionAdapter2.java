@@ -16,9 +16,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**Adapter that is used to display the sessions nicely in the CurrentSessionActivity.*/
 public class SessionAdapter2 extends ArrayAdapter<Session> {
 
-    ArrayList<Session> session;
+    private ArrayList<Session> session;
 
     // Constructor.
     public SessionAdapter2(@NonNull Context context, int resource, @NonNull ArrayList<Session> objects) {

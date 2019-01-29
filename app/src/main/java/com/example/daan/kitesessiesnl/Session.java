@@ -4,7 +4,7 @@
 
 package com.example.daan.kitesessiesnl;
 
-//Module class for a session.
+/**Module class for a session.*/
 public class Session {
 
     private String name, kite, time, spot, date, exactDate;

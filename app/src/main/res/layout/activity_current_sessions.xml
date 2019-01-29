@@ -22,7 +22,10 @@
     <ListView
         android:id="@+id/currentSessionsList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:divider="#222831"
-        android:dividerHeight="4dp" />
+        android:dividerHeight="4dp"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="10dp"
+        android:scrollbarThumbVertical="@drawable/custom_scroll_bar" />
 </LinearLayout>
