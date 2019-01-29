@@ -1,4 +1,4 @@
-# Eindproject-minor-prog
+# Eindproject-minor-prog - KiteSessiesNL
 
 ## Naam: Daan Huikeshoven (11066628)
 
