@@ -20,10 +20,11 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 - OpenWeatherMap API (om weer en wind op de spot te tonen aan de gebruiker)
 
 ### External components
-- https://ide50-huikie.legacy.cs50.io:8080/list
+- Online database met alle spots: https://ide50-huikie.legacy.cs50.io:8080/spotList
+- Online database met alle sessies: https://ide50-huikie.legacy.cs50.io:8080/sessionList
 
 ### Similar
 - http://www.kitetracker.com/gps/livemap > Kitetracker laat mensen op een bepaalde locatie een sessie aanmaken en geeft dan voornamelijk informatie over de kiter. Ik ben van plan kiters op bepaalde spots een sessie aan te laten maken en zowel informatie over de spot te tonen als informatie over de aanwezige kiters.
 
 ### Hardest parts
-- Het nodig hebben van minimaal twee online databases. Dat hebben we eerder gedaan bij het maken van de Trivia app.
+- Het nodig hebben van minimaal twee online databases. Dit hebben we echter eerder gedaan bij het maken van de Trivia app. Nu zal de interactie met deze databases echter wel wat complexer worden.
