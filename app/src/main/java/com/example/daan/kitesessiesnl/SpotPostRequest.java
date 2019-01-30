@@ -5,7 +5,6 @@
 package com.example.daan.kitesessiesnl;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;

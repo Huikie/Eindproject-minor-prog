@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -87,13 +88,16 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         Intent intent = getIntent();
         String title = intent.getStringExtra("Title");
 
+        // Trim the title so that the ' >>' is removed.
+        String titleTrimmed = title.substring(0, title.length() - 3);
+
         ArrayList<Session> s2 = new ArrayList<>();
 
         // Create a timestamp of today's date to determine which sessions to show.
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
 
         for (Session session: sessions) {
-            if(session.getSpot().equals(title) && session.getDate().equals(timeStamp)){
+            if(session.getSpot().equals(titleTrimmed) && session.getDate().equals(timeStamp)){
 
                 s2.add(session);
 

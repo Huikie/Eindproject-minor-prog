@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,7 +57,7 @@ public class SpotRequestActivity extends AppCompatActivity {
     }
 
     /**Method that allows users to upload a spot image and preview it.
-     * Source: https://stackoverflow.com/questions/9107900/how-to-upload-image-from-gallery-in-android.*/
+     * Source: https://stackoverflow.com/questions/9107900/how-to-upload-image-from-gallery-in-android*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -77,7 +78,7 @@ public class SpotRequestActivity extends AppCompatActivity {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
                 // Get the size of an image that a user tries to upload and if it's bigger than 0.5 mb show an error message.
-                // Source: https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android.
+                // Source: https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] imageInByte = stream.toByteArray();
@@ -152,7 +153,7 @@ public class SpotRequestActivity extends AppCompatActivity {
                 Integer distance = parseInt(spotDistance.getText().toString());
 
                 // Converting Image from ImageView to Base64 String.
-                // Source: https://stackoverflow.com/questions/16291800/converting-image-from-imageview-to-base64-string.
+                // Source: https://stackoverflow.com/questions/16291800/converting-image-from-imageview-to-base64-string
                 BitmapDrawable drawable = (BitmapDrawable) spotImage.getDrawable();
                 Bitmap bmap = drawable.getBitmap();
 
@@ -164,7 +165,7 @@ public class SpotRequestActivity extends AppCompatActivity {
                 // Change the image to a ByteArray.
                 byte[] bb = bos.toByteArray();
 
-                // Define flags: Source: https://stackoverflow.com/questions/9436103/android-util-base64-encode-decode-flags-parameter.
+                // Define flags: Source: https://stackoverflow.com/questions/9436103/android-util-base64-encode-decode-flags-parameter
                 int flags = Base64.NO_WRAP | Base64.URL_SAFE;
 
                 // Encode the ByteArray to a Base64 encoded string.
@@ -175,13 +176,24 @@ public class SpotRequestActivity extends AppCompatActivity {
                 SpotPostRequest x = new SpotPostRequest(this);
                 x.postSpot(name, spotTypeTxt, spotSurfacesTxt, distance, image, 0, 0, coordinates.latitude, coordinates.longitude);
 
-                Intent intent2 = new Intent(this, MapsActivity.class);
-                startActivity(intent2);
-                finish();
+
+            // Heads the user back to the map activity after he/she started a session. Do this with a delay to be able to show them that the session was started successfully.
+            // Source: https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity-from-another-activity
+            Toast.makeText(this, "Je spotaanvraag voor " + name + " is succesvol uitgevoerd! Je aanvraag is nu in behandeling.",
+                    Toast.LENGTH_LONG).show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SpotRequestActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            },2500);
             }
     }
 
-
+    /**Method that allows users to upload an image by starting startActivityForResult when the user clicks the upload button.*/
     public void loadImage(View view){
         startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
     }

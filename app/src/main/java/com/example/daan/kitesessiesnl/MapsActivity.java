@@ -8,11 +8,14 @@ import android.content.Intent;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -101,6 +104,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /**Method that gets the spots from the API.*/
     @Override
     public void gotSpots(final ArrayList<Spot> spots) {
+
+        ImageView loadingImage = findViewById(R.id.loadingSpots);
+        loadingImage.setVisibility(View.GONE);
+
+        TextView loadingImageTitle = findViewById(R.id.loadingSpotsTitle);
+        loadingImageTitle.setVisibility(View.GONE);
 
         // For every spot in the spots ArrayList.
         for(Spot spot:spots){

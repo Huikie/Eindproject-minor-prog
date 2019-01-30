@@ -39,13 +39,19 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
 
         int index = position;
 
+        // Alternate color of list items.
+        // Source: https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
         if(index %2 == 1){
+
             // Set a background color for ListView regular row/item
             convertView.setBackgroundColor(Color.parseColor("#4e525a"));
+
         }
         else{
+
             // Set the background color for alternate row/item
             convertView.setBackgroundColor(Color.parseColor("#383d45"));
+
         }
 
         TextView spotName = convertView.findViewById(R.id.spotName);

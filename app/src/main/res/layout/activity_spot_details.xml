@@ -27,6 +27,7 @@
             android:id="@+id/spotDImage"
             android:layout_width="250dp"
             android:layout_height="225dp"
+            android:layout_marginLeft="6dp"
             android:layout_weight="1"
             android:cropToPadding="false"
             android:paddingLeft="12dp"
@@ -47,6 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:textColor="#eeeeee"
                 android:textSize="16sp" />
 
@@ -55,6 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:textColor="#eeeeee"
                 android:textSize="16sp" />
 
@@ -63,6 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:textColor="#eeeeee"
                 android:textSize="16sp" />
 
@@ -71,6 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:textColor="#eeeeee"
                 android:textSize="16sp" />
 
@@ -79,6 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
                 android:textColor="#eeeeee"
                 android:textSize="16sp" />
 
@@ -88,7 +99,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:textColor="#eeeeee"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp" />
 
         </LinearLayout>
 

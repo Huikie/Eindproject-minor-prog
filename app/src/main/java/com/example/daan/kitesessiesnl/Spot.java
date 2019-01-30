@@ -25,7 +25,7 @@ public class Spot implements Comparable<Spot> {
     }
 
         /** This method defines a way to sort the list of spots alphabetically based on the spot name.
-        * Source: https://www.youtube.com/watch?v=hncd_WgF83c.*/
+        * Source: https://www.youtube.com/watch?v=hncd_WgF83c*/
         @Override
         public int compareTo(Spot other) {
             return this.name.compareToIgnoreCase(other.name);

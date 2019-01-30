@@ -6,7 +6,10 @@ package com.example.daan.kitesessiesnl;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +30,12 @@ public class SpotStatusActivity extends AppCompatActivity implements SpotGetRequ
 
     @Override
     public void gotSpots(ArrayList<Spot> spots) {
+
+        ImageView loadingImage = findViewById(R.id.loadingSpots);
+        loadingImage.setVisibility(View.GONE);
+
+        TextView loadingImageTitle = findViewById(R.id.loadingSpotsTitle);
+        loadingImageTitle.setVisibility(View.GONE);
 
         // Sort the spots in alphabetic order based on the spot name.
         Collections.sort(spots);

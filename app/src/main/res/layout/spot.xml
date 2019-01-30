@@ -14,6 +14,7 @@
             android:id="@+id/spotName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             android:layout_weight="1"
             android:gravity="start"
             android:paddingLeft="12dp"
@@ -27,7 +28,7 @@
             android:id="@+id/spotStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="6dp"
             android:layout_weight="1"
             android:gravity="end"
             android:paddingRight="12dp"
@@ -44,8 +45,9 @@
 
         <TextView
             android:id="@+id/spotType"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             android:layout_weight="1"
             android:gravity="start"
             android:paddingLeft="12dp"
@@ -55,7 +57,7 @@
 
         <TextView
             android:id="@+id/spotSurface"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -66,9 +68,9 @@
 
         <TextView
             android:id="@+id/spotDistance"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="6dp"
             android:layout_weight="1"
             android:gravity="end"
             android:paddingLeft="12dp"

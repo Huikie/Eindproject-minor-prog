@@ -75,6 +75,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/loadingSpotsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:padding="6dp"
+            android:text="Spots worden geladen!"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/loadingSpots"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_sync_problem_black_24dp" />
+
+    </LinearLayout>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"

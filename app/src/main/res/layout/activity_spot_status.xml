@@ -19,6 +19,24 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/loadingSpots"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:padding="6dp"
+        android:src="@drawable/ic_sync_problem_black_24dp" />
+
+    <TextView
+        android:id="@+id/loadingSpotsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="6dp"
+        android:text="Spots worden geladen!"
+        android:textColor="#eeeeee"
+        android:textSize="18sp" />
+
     <ListView
         android:id="@+id/spotstatusList"
         android:layout_width="match_parent"
