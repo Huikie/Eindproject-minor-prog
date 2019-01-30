@@ -17,12 +17,12 @@
 - De else-statement staat zo dicht mogelijk bij de if-statement. (1)
 - Initieer een lokale variabele zo dicht mogelijk bij waar je deze gebruikt. (2)
 - Plaats bij het initialiseren van meerdere variabelen van dezelfde modelklasse de variabelen naast elkaar in plaats van herhalen modelklasse op iedere regel.
-	String username, title, name;
+	String username, title, name; (3)
 
 ## Security / access
 - Maak variabelen private waar mogelijk. (2)
 
-## Bronnen
+## Sources
 Link 1: http://www.cs.cornell.edu/courses/JavaAndDS/JavaStyle.html#fielddecs
 
 Link 2: https://javaranch.com/style.jsp
