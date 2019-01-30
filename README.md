@@ -30,8 +30,12 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 - Het nodig hebben van minimaal twee online databases. Dit hebben we echter eerder gedaan bij het maken van de Trivia app. Nu zal de interactie met deze databases echter wel wat complexer worden.
 
 ### Attribution
+#### Map
+Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link):
+https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/com/example/daan/kitesessiesnl
+
 - Time picker voor het kiezen van een begin en eindtijd bij het starten van een sessie:<br>
-  https://www.codingdemos.com/android-timepicker-edittext/
+  https://www.codingdemos.com/android-timepicker-edittext/<br>
 - Instellen van een vertraging nadat sessie gestart is en nadat spotaanvraag gestart is:      <br>https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity-from-another-activity
 - Ordenen van ListViews:<br>
   https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class <br>https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java<br>
