@@ -30,3 +30,12 @@ https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/c
   https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
 - Windrichting (letter) horende bij een bepaalde hoek vanuit waar de wind komt:<br>
   https://uni.edu/storm/Wind%20Direction%20slide.pdf
+### Screenshots van de app
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/home.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/home_hint.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_details.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/start_session.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/long_click_info.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_request.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/session_list.png)
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_list.png)
