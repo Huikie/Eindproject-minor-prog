@@ -55,4 +55,3 @@ https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/c
   https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
 - Windrichting (letter) horende bij een bepaalde hoek vanuit waar de wind komt:<br>
   https://uni.edu/storm/Wind%20Direction%20slide.pdf
-> !Deze bronnen kunnen ook gevonden worden op de specifieke plekken in mijn code waar ze gebruikt zijn.!
