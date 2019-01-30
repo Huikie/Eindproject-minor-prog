@@ -4,7 +4,7 @@
 ### Doel van de app:
 - De app heeft als doel dat kiters elkaar door middel van de app kunnen informeren over zaken die belangrijk zijn voordat besloten wordt om een sessie te starten op een bepaalde spot. Daarnaast informeert de app kiters zelf ook. Door het informeren van elkaar en de infromatie die geleverd wordt door de app zelf, kunnen kiters bijvoorbeeld beter inschatten wat voor materiaal ze mee moeten nemen voor de sessie.
 ### Copyright statement / License
-- https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE
+- [Licentie](https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE)
 ### Attribution
 Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link):<br>
 https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/com/example/daan/kitesessiesnl
