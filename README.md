@@ -1,8 +1,9 @@
-# KiteSessiesNL
+# KiteSessiesNL App
 
-## Naam: Daan Huikeshoven (11066628)
+## Ontwikkelaar: Daan Huikeshoven (11066628)
 
-
+### License
+- https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE
 ### Attribution
 #### Map
 Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link):<br>
