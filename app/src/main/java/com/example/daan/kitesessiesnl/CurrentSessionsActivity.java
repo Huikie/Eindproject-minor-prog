@@ -1,3 +1,7 @@
+
+/**Daan Huikeshoven - 11066628
+ * University of Amsterdam*/
+
 package com.example.daan.kitesessiesnl;
 
 import android.app.Dialog;
@@ -37,7 +41,7 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
 
         // For every session in the sessions ArrayList.
-        for(Session session: sessions) {
+        for (Session session: sessions) {
 
             // If the date of the started sessions is equal to the today's date add this session to a new array and put it in the currentSessionList.
             if (session.getDate().equals(timeStamp)) {
@@ -53,7 +57,7 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
                         // Spots in alphabetic order on spot name.
                         int compareSpot = session.getSpot().compareToIgnoreCase(otherSession.getSpot());
 
-                        if(compareSpot != 0){
+                        if (compareSpot != 0){
                             return compareSpot;
                         }
 
@@ -73,7 +77,7 @@ public class CurrentSessionsActivity extends AppCompatActivity implements Sessio
             }
 
             // If there are no sessions yet today.
-            if(todaySessions.size() == 0){
+            if (todaySessions.size() == 0){
 
                 // Then create a dialog that tells the user that there aren't any sessions yet today.
                 Dialog dialog = new Dialog(this);

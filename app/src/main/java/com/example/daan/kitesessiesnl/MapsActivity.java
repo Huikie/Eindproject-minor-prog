@@ -8,7 +8,6 @@ import android.content.Intent;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -112,10 +111,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         loadingImageTitle.setVisibility(View.GONE);
 
         // For every spot in the spots ArrayList.
-        for(Spot spot:spots){
+        for (Spot spot:spots){
 
             // If the spot status is equal to 1 (approved) add a marker for the spot on the map.
-            if(spot.getStatus() == 1){
+            if (spot.getStatus() == 1){
                 mMap.addMarker(new MarkerOptions().position(new LatLng(spot.getLat(), spot.getLon())).title(spot.getName() + " >>"));
             }
 
@@ -156,16 +155,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapTypes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(id == 0){
+                if (id == 0){
                     mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 }
-                else if(id == 1){
+                else if (id == 1){
                     mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 }
-                else if(id == 2){
+                else if (id == 2){
                     mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 }
-                else if(id == 3){
+                else if (id == 3){
                     mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                 }
             }

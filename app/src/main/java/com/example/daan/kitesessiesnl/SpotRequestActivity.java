@@ -69,7 +69,7 @@ public class SpotRequestActivity extends AppCompatActivity {
         TextView errorMessageEmpty = findViewById(R.id.errorMessageEmpty);
 
         // Detects request codes.
-        if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+        if (requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
 
             Uri selectedImage = data.getData();
 
@@ -85,14 +85,14 @@ public class SpotRequestActivity extends AppCompatActivity {
                 long lengthbmp = imageInByte.length;
 
                 // If size of image isn't bigger than 0.5 mb doesn't show any error messages and set the ImageView equal to that image.
-                if(lengthbmp < 500000){
+                if (lengthbmp < 500000){
                     spotImage.setImageBitmap(bitmap);
                     errorMessageEmpty.setVisibility(View.GONE);
                     errorMessage.setVisibility(View.GONE);
                 }
 
                 // If size of image is bigger than 0.5 mb show error message and delete image that was possible set before.
-                else{
+                else {
                     errorMessage.setVisibility(View.VISIBLE);
                     spotImage.setImageDrawable(null);
                 }
@@ -148,7 +148,7 @@ public class SpotRequestActivity extends AppCompatActivity {
         }
 
         // If the above if statements aren't the case, post the spot request to the online database.
-        else if(!TextUtils.isEmpty(spotName.getText()) && !TextUtils.isEmpty(spotDistance.getText()) && spotImage.getDrawable() != null ) {
+        else if (!TextUtils.isEmpty(spotName.getText()) && !TextUtils.isEmpty(spotDistance.getText()) && spotImage.getDrawable() != null ) {
 
                 Integer distance = parseInt(spotDistance.getText().toString());
 

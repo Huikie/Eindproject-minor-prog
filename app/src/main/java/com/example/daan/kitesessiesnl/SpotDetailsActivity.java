@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -97,7 +96,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
 
         for (Session session: sessions) {
-            if(session.getSpot().equals(titleTrimmed) && session.getDate().equals(timeStamp)){
+            if (session.getSpot().equals(titleTrimmed) && session.getDate().equals(timeStamp)){
 
                 s2.add(session);
 
@@ -121,7 +120,7 @@ public class SpotDetailsActivity extends AppCompatActivity implements WeatherReq
         }
 
         // If there are no sessions yet today.
-        if(s2.size() == 0){
+        if (s2.size() == 0){
 
             // Then create a dialog that tells the user that there aren't any sessions yet today.
             Dialog dialog = new Dialog(this);

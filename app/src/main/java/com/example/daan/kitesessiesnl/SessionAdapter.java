@@ -38,13 +38,13 @@ public class SessionAdapter extends ArrayAdapter<Session> {
 
         // Alternate color of list items.
         // Source: https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
-        if(position %2 == 1){
+        if (position %2 == 1){
 
             // Set a background color for ListView regular row/item
             convertView.setBackgroundColor(Color.parseColor("#4e525a"));
 
         }
-        else{
+        else {
 
             // Set the background color for alternate row/item
             convertView.setBackgroundColor(Color.parseColor("#383d45"));

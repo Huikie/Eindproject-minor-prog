@@ -41,13 +41,13 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
 
         // Alternate color of list items.
         // Source: https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
-        if(index %2 == 1){
+        if (index %2 == 1){
 
             // Set a background color for ListView regular row/item
             convertView.setBackgroundColor(Color.parseColor("#4e525a"));
 
         }
-        else{
+        else {
 
             // Set the background color for alternate row/item
             convertView.setBackgroundColor(Color.parseColor("#383d45"));
@@ -67,9 +67,9 @@ public class SpotAdapter extends ArrayAdapter<Spot>{
 
         spotDistance.setText(Html.fromHtml("<b>"+(spot.get(index).getDistance()).toString() + "m" + "</b>"+ " vanaf parkeerplaats"));
 
-        if(spot.get(index).getStatus() == 0){
+        if (spot.get(index).getStatus() == 0){
             spotStatus.setText("(in behandeling)");
-        } else{
+        } else {
             spotStatus.setText("(zichtbaar)");
         }
 

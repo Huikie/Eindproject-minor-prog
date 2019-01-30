@@ -81,12 +81,12 @@ public class CreateSessionActivity extends AppCompatActivity {
                         TextView stopTime = findViewById(R.id.stopTime);
 
                         // When the user picks a start time remove the error message if there was one.
-                        if(!startTime.getText().equals("Begintijd")){
+                        if (!startTime.getText().equals("Begintijd")){
                             startTimeLayout.setError(null);
                         }
 
                         // When the user picks an end time remove the error message if there was one.
-                        if(!stopTime.getText().equals("Eindtijd")){
+                        if (!stopTime.getText().equals("Eindtijd")){
                             stopTimeLayout.setError(null);
                         }
 
@@ -108,21 +108,21 @@ public class CreateSessionActivity extends AppCompatActivity {
                 EditText sizeThree = findViewById(R.id.thirdSize);
 
                 // When numbKites chosen is equal to 1 set only the first EditText to VISIBLE.
-                if(id == 0){
+                if (id == 0){
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.GONE);
                     sizeThree.setVisibility(View.GONE);
                 }
 
                 // When numbKites chosen is equal to 2 set the first & second EditText to VISIBLE.
-                else if(id == 1){
+                else if (id == 1){
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.VISIBLE);
                     sizeThree.setVisibility(View.GONE);
                 }
 
                 // When numbKites chosen is equal to 3 set the first, second & third EditText to VISIBLE.
-                else if(id == 2){
+                else if (id == 2){
                     sizeOne.setVisibility(View.VISIBLE);
                     sizeTwo.setVisibility(View.VISIBLE);
                     sizeThree.setVisibility(View.VISIBLE);
@@ -215,7 +215,7 @@ public class CreateSessionActivity extends AppCompatActivity {
         }
 
         // If none of the above if statements are the case approve the submit.
-       else if(!TextUtils.isEmpty(name.getText()) && emptyEditTexts.size() == 0 && !stopTime.getText().equals("Eindtijd") && !startTime.getText().equals("Begintijd")){
+       else if (!TextUtils.isEmpty(name.getText()) && emptyEditTexts.size() == 0 && !stopTime.getText().equals("Eindtijd") && !startTime.getText().equals("Begintijd")){
 
             // Post session information of a user to my online database.
             SessionPostRequest x = new SessionPostRequest(this);
