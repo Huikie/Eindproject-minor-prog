@@ -1,7 +1,8 @@
 # KiteSessiesNL App
 
 ## Ontwikkelaar: Daan Huikeshoven (11066628)
-
+### Doel van de app:
+- 
 ### License
 - https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE
 ### Attribution
