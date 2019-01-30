@@ -30,7 +30,7 @@ Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link)
   https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
 - Windrichting (letter) horende bij een bepaalde hoek vanuit waar de wind komt:<br>
   https://uni.edu/storm/Wind%20Direction%20slide.pdf
-### Screenshots van de app
+## Screenshots van de app
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/home.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/home_hint.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_details.png)
