@@ -1,4 +1,4 @@
-# Style guide: 10 rules
+# Style guide: 10 regels
 
 ## Naming conventions
 - Codeer variabelen met de camelCase. (3)
