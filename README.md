@@ -30,14 +30,25 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 - Het nodig hebben van minimaal twee online databases. Dit hebben we echter eerder gedaan bij het maken van de Trivia app. Nu zal de interactie met deze databases echter wel wat complexer worden.
 
 ### Attribution
-- Time picker voor het kiezen van een begin en eindtijd bij het starten van een sessie: https://www.codingdemos.com/android-timepicker-edittext/
-- Instellen van een vertraging nadat sessie gestart is en nadat spotaanvraag gestart is: https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity-from-another-activity
-- Ordenen van ListViews: https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class, https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java, https://www.youtube.com/watch?v=hncd_WgF83c
-- Pop-up scherm voor informatie over hoe een spotaanvraag gedaan kan worden: https://www.youtube.com/watch?v=fn5OlqQuOCk
-- Afwisselende achtergrondkleuren van ListView items: https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
-- Tegengaan dat POST request twee keer gedaan wordt: https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
-- Gebruikers in staat stellen afbeeldingen te uploaden: https://stackoverflow.com/questions/9107900/how-to-upload-image-from-gallery-in-android
-- Upgeloade afbeeldingen omzetten naar een Base64 encoded String: https://stackoverflow.com/questions/16291800/converting-image-from-imageview-to-base64-string, https://stackoverflow.com/questions/9436103/android-util-base64-encode-decode-flags-parameter
-- Grootte van afbeeldingen krijgen: https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
-- Windrichting (letter) horende bij een bepaalde hoek vanuit waar de wind komt: https://uni.edu/storm/Wind%20Direction%20slide.pdf
+- Time picker voor het kiezen van een begin en eindtijd bij het starten van een sessie:<br>
+  https://www.codingdemos.com/android-timepicker-edittext/
+- Instellen van een vertraging nadat sessie gestart is en nadat spotaanvraag gestart is:      <br>https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity-from-another-activity
+- Ordenen van ListViews:<br>
+  https://stackoverflow.com/questions/16192244/java-comparators-for-a-class-in-another-class <br>https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java<br>
+  https://www.youtube.com/watch?v=hncd_WgF83c
+- Pop-up scherm voor informatie over hoe een spotaanvraag gedaan kan worden:<br>
+  https://www.youtube.com/watch?v=fn5OlqQuOCk
+- Afwisselende achtergrondkleuren van ListView items:<br>
+  https://android--code.blogspot.com/2015/08/android-listview-alternate-row-color.html
+- Tegengaan dat POST request twee keer gedaan wordt:<br>
+  https://stackoverflow.com/questions/27873001/android-volley-sending-data-twice
+- Gebruikers in staat stellen afbeeldingen te uploaden:<br>
+  https://stackoverflow.com/questions/9107900/how-to-upload-image-from-gallery-in-android
+- Upgeloade afbeeldingen omzetten naar een Base64 encoded String:<br>
+  https://stackoverflow.com/questions/16291800/converting-image-from-imageview-to-base64-string<br>
+  https://stackoverflow.com/questions/9436103/android-util-base64-encode-decode-flags-parameter
+- Grootte van afbeeldingen krijgen:<br>
+  https://stackoverflow.com/questions/9316986/how-to-get-the-size-of-an-image-in-android
+- Windrichting (letter) horende bij een bepaalde hoek vanuit waar de wind komt:<br>
+  https://uni.edu/storm/Wind%20Direction%20slide.pdf
 > !Deze bronnen kunnen ook gevonden worden op de specifieke plekken in mijn code waar ze gebruikt zijn.!
