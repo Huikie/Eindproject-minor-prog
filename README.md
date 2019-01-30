@@ -24,7 +24,7 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 - Online database met alle sessies: https://ide50-huikie.legacy.cs50.io:8080/sessionList
 
 ### Similar
-- http://www.kitetracker.com/gps/livemap > Kitetracker laat mensen op een bepaalde locatie een sessie aanmaken en geeft dan voornamelijk informatie over de kiter. Ik ben van plan kiters op bepaalde spots een sessie aan te laten maken en zowel informatie over de spot te tonen als informatie over de aanwezige kiters.
+- http://www.kitetracker.com/gps/livemap > Kitetracker is een website, maar ik kon geen vergelijkbare app vinden. Kitetracker heeft een functionaliteit die aardig overeen komt met het gebruik van een app. Kitetracker laat mensen op een bepaalde LOCATIE een sessie aanmaken en geeft dan voornamelijk informatie over de kiter. Ik ben juist van plan kiters op bepaalde SPOTS een sessie aan te laten maken. Er kunnen dan sessies gestart worden op de spots die aanwezig zijn in de app en gebruikers kunnen een spotaanvraag doen, zodat hun spot op de kaart komt en ze daar een sessie kunnen starten. Ook wordt in mijn app zowel informatie over de spot getoond, als informatie over de aanwezige kiters (anders dan Kitetracker). Daarnaast wil ik actuele weerinformate laten zien op de verschillende spots (heeft Kitetracker niet).
 
 ### Hardest parts
 - Het nodig hebben van minimaal twee online databases. Dit hebben we echter eerder gedaan bij het maken van de Trivia app. Nu zal de interactie met deze databases echter wel wat complexer worden.
