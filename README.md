@@ -7,7 +7,7 @@
 - [Licentie](https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE)
 ### Attribution
 Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link):<br>
-https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/com/example/daan/kitesessiesnl
+[Map kitesessiesnl](https://github.com/Huikie/Eindproject-minor-prog/tree/master/app/src/main/java/com/example/daan/kitesessiesnl)
 
 - Time picker voor het kiezen van een begin en eindtijd bij het starten van een sessie:<br>
   https://www.codingdemos.com/android-timepicker-edittext/<br>
