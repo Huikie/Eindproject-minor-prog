@@ -12,7 +12,7 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 ## Solution
 - Kiters kunnen elkaar informeren om zo een fijnere sessie te hebben.
 #### Main features:<br>
-1) MVP:<br>
+1) MVP (besproken met Renske):<br>
 - Informatie over aanwezige spots kunnen bekijken.<br>
 - Sessie op deze spots kunnen starten.<br>
 - Spotaanvraag kunnen doen.<br>
