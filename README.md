@@ -39,3 +39,6 @@ Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_request.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/session_list.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_list.png)
+
+## Product demo
+[Walkthrough video](https://youtu.be/XCjghHnFIVA)
