@@ -7,5 +7,5 @@ In deze app kunnen kiters een sessie starten op spots die aanwezig zijn in de ap
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/home.png)
 
 ## Technische design
-
+![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/report_design.png)
 ## Uitdagingen gedurende ontwikkeling van de app
