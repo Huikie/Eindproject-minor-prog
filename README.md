@@ -3,6 +3,8 @@
 ## Ontwikkelaar: Daan Huikeshoven (11066628)
 ## Doel van de app
 De app heeft als doel dat kiters elkaar door middel van de app kunnen informeren over zaken die belangrijk zijn voordat besloten wordt om een sessie te starten op een bepaalde spot. Daarnaast informeert de app kiters zelf ook. Door het informeren van elkaar en de informatie die geleverd wordt door de app zelf, kunnen kiters bijvoorbeeld beter inschatten wat voor materiaal ze mee moeten nemen voor de sessie.
+## Product demo
+[Walkthrough video](https://youtu.be/XCjghHnFIVA)
 ## Copyright statement / License
 - [Licentie](https://github.com/Huikie/Eindproject-minor-prog/blob/master/LICENSE)
 ## Attribution
@@ -39,6 +41,3 @@ Alle bronnen hieronder zijn gebruikt in bestanden uit de onderstaande map (link)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_request.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/session_list.png)
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/spot_list.png)
-
-## Product demo
-[Walkthrough video](https://youtu.be/XCjghHnFIVA)
