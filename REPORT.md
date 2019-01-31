@@ -9,6 +9,7 @@ In deze app kunnen kiters een sessie starten op spots die aanwezig zijn in de ap
 ## Technische design
 ### Overzicht van activiteiten & API's
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/report_design.png)
-### Details: modules, functies en relaties
-
+### Details: modules/classes, functies en relaties
+Modules/classes:
+- 
 ## Uitdagingen gedurende ontwikkeling van de app
