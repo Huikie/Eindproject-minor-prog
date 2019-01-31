@@ -11,9 +11,9 @@ In deze app kunnen kiters een sessie starten op spots die aanwezig zijn in de ap
 ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/report_design.png)
 #### Details: modules, request classes, adapters en functies
 Modules
-- Session module: wordt gebruikt om alle atrributen van een sessie te definiëren. De session module bevat de volgende attributen: name, kite, time, spot, date en exactDate.
+- Session module: wordt gebruikt om alle attributen van een sessie te definiëren. De session module bevat de volgende attributen: name, kite, time, spot, date en exactDate.
 - Spot module: wordt gebruikt om alle attributen van een spot te definiëren. De spot module bevat de volgende attributen: name, type, surface, distance, imageId, directionId, lat, lon en status. 'Name' is in de spot module het zelfde als 'spot' in de session module, namelijk de spot naam.
-- WeatherInfo module: wordt gebruikt om alle atrributen die horen bij de benodigde weerinformatie te definiëren. De weatherinfo module bevat de volgende attributen: speed, degrees en temperature.<br><br>
+- WeatherInfo module: wordt gebruikt om alle attributen die horen bij de benodigde weerinformatie te definiëren. De weatherinfo module bevat de volgende attributen: speed, degrees en temperature.<br><br>
 Adapters:
 - SessionAdapter: wordt gebruikt om de lijst in de SpotDetailsActvitiy met de juiste elementen en in een mooie stijl te weergeven.
 - SessionAdapter2: wordt gebruikt om de lijst in de CurrentSessionActivity met de juiste elementen en in een mooie stijl te weergeven.
@@ -22,7 +22,7 @@ Request classes:
 - SessionPostRequest: wordt gebruikt nadat een sessie gestart is in de CreateSessionActivity om de sessie in de database te krijgen.
 - SessionRequest: wordt gebruikt om sessies uit de database te krijgen. Wordt gebruikt in de SpotDetailsActivity om de 'Sessies vandaag' lijst te vullen met sessies vandaag op een specifieke spot en in de CurrentSessionActivity om alle sessies die vandaag gaande zijn te weergeven in een lijst.
 - SpotPostRequest: wordt gebruikt nadat een spotaanvraag gedaan is in de SpotRequestActivity om de spotaanvraag in de database te krijgen.
-- SpotGetRequest: wordt gebruikt om spots uit de database te krijgen. Wordt gebruikt in de MapsActivity om de kaart te voorzien van markers voor de spots die een status = 1 (approved) in de database hebben en in de SpotStatusActivity om een lijst te vullen met alle spots inclusief de spots die nog in behandeling zijn (niet approved).<br><br>
+- SpotGetRequest: wordt gebruikt om spots uit de database te krijgen. Wordt gebruikt in de MapsActivity om de kaart te voorzien van markers voor de spots die een status = 1 ('approved') in de database hebben en in de SpotStatusActivity om een lijst te vullen met alle spots inclusief de spots die nog in behandeling zijn (niet 'approved').<br><br>
 Functies die uitleg behoeven:
 - editTextActivator functie (in CreateSessionActivity): deze functie zorgt ervoor dat er net zo veel EditTexts zichtbaar worden voor de gebruikers als de hoeveelheid kites die zij aangegeven hebben mee te willen nemen. Zo kunnen ze voor elke kite die ze mee willen nemen een maat invoeren.
 ## Uitdagingen gedurende ontwikkeling van de app
