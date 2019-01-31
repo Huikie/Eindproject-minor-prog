@@ -19,7 +19,7 @@ Kitesurfers kunnen deze app gebruiken om informatie te krijgen en te delen over 
 2) extra:<br>
 - Gebruikers afbeelding laten uploaden bij spotaanvraag.
 #### Schets
-- https://github.com/Huikie/Eindproject-minor-prog/blob/master/DESIGN.md
+- ![](https://github.com/Huikie/Eindproject-minor-prog/blob/master/doc/advanced_sketches.png)
 
 ## Prerequisites
 
